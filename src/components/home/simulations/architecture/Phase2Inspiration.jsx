@@ -13,19 +13,19 @@ export default function Phase2Inspiration({ scrollYProgress }) {
 
   // --- SEQUENTIAL ICON MOVEMENT (Spaced over 0.15 - 0.25) ---
   const dribX = useTransform(scrollYProgress, [0.15, 0.17], ["30vw", "0vw"]);
-  const dribY = useTransform(scrollYProgress, [0.15, 0.17], ["-20vh", "15vh"]);
+  const dribY = useTransform(scrollYProgress, [0.15, 0.17], ["-25vh", "10vh"]);
   const dribOpacity = useTransform(scrollYProgress, [0.15, 0.155, 0.165, 0.17], [0, 1, 1, 0]);
 
   const pinX = useTransform(scrollYProgress, [0.17, 0.19], ["-30vw", "0vw"]);
-  const pinY = useTransform(scrollYProgress, [0.17, 0.19], ["-20vh", "15vh"]);
+  const pinY = useTransform(scrollYProgress, [0.17, 0.19], ["-25vh", "10vh"]);
   const pinOpacity = useTransform(scrollYProgress, [0.17, 0.175, 0.185, 0.19], [0, 1, 1, 0]);
 
   const camX = useTransform(scrollYProgress, [0.19, 0.21], ["30vw", "0vw"]);
-  const camY = useTransform(scrollYProgress, [0.19, 0.21], ["-20vh", "15vh"]);
+  const camY = useTransform(scrollYProgress, [0.19, 0.21], ["-25vh", "10vh"]);
   const camOpacity = useTransform(scrollYProgress, [0.19, 0.195, 0.205, 0.21], [0, 1, 1, 0]);
 
   const figX = useTransform(scrollYProgress, [0.21, 0.23], ["-20vw", "0vw"]);
-  const figY = useTransform(scrollYProgress, [0.21, 0.23], ["-30vh", "15vh"]);
+  const figY = useTransform(scrollYProgress, [0.21, 0.23], ["-35vh", "10vh"]);
   const figOpacity = useTransform(scrollYProgress, [0.21, 0.215, 0.225, 0.23], [0, 1, 1, 0]);
 
   const conduitOpacity = useTransform(scrollYProgress, [0.15, 0.17], [0, 1]);
@@ -78,13 +78,13 @@ export default function Phase2Inspiration({ scrollYProgress }) {
       className="position-absolute w-100 h-100 flex-column align-items-center justify-content-center pointer-events-none z-3"
       style={{ opacity: inspOpacity, display: inspDisplay }}
     >
-      <motion.div className="text-center position-absolute top-0 mt-5 pt-5 z-2" style={{ opacity: textOpacity }}>
+      <motion.div className="text-center position-absolute top-0 mt-5 z-2" style={{ opacity: textOpacity }}>
         <h2 className="txt-ff fw-700 ff-gro" style={{ fontSize: '3rem' }}>The <span className="text-warning">Inspiration</span>.</h2>
         <p className="txt-f5 fs-19 mt-2">Gathering references, synthesizing ideas.</p>
       </motion.div>
 
       {/* THE THINKING ENGINE (CHARACTER) */}
-      <div className="position-absolute d-flex flex-column align-items-center justify-content-end" style={{ zIndex: 5, height: '420px', top: '40vh' }}>
+      <div className="position-absolute d-flex flex-column align-items-center justify-content-end" style={{ zIndex: 5, height: '420px', top: '35vh' }}>
 
         {/* TOP ROW: Bulb (Left) & Blueprint Card (Right) */}
         <motion.div

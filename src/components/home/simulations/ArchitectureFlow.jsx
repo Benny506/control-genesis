@@ -80,8 +80,8 @@ function ArchitectureFlow() {
             <div style={{ width: '280px', height: '280px' }}>
               <Lottie animationData={devSkillsLottie} loop={true} />
             </div>
-            <h3 className="txt-ff fw-700 ff-gro mt-3" style={{ fontSize: '3rem', letterSpacing: '-1px' }}>Curious how we operate?</h3>
-            <p className="txt-f5 fs-18 mt-2 ff-mono text-light">Scroll down to explore our architectural flow...</p>
+            <h3 className="txt-ff fw-700 ff-gro mt-3, text-center" style={{ fontSize: '3rem', letterSpacing: '-1px' }}>Curious how we operate?</h3>
+            <p className="txt-f5 fs-18 mt-2 ff-mono text-light text-center">Scroll down to explore our architectural flow...</p>
           </motion.div>
 
           <Phase1Spark scrollYProgress={scrollYProgress} avatarClient={avatarClient} avatarDev={avatarDev} />
