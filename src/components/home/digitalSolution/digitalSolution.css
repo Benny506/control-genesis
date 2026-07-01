@@ -1,0 +1,17 @@
+.services{
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+    border-radius: 30px;
+    padding:14px 20px 0px 20px;
+}
+.imgSizing{
+  width: 80%;
+  max-width: 511px;
+}
+@media (min-width: 968px) {
+    .services {
+      padding: 40px 80px 0px 80px;
+    }
+  }

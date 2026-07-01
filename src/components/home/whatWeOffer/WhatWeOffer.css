@@ -1,0 +1,12 @@
+.video-container {
+  width: 300px; /* or a responsive width of your choice */
+  height: auto;
+}
+
+.sticky-video {
+  width: 100%;
+  border-radius: 25px;
+  position: sticky; /* Make the video sticky */
+  top: 2rem; /* The video will "stick" 2rem from the top of the viewport */
+  align-self: flex-start; /* Aligns the video at the start of the flex container */
+}

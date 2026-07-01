@@ -1,0 +1,185 @@
+/* BACKGROUND COLOR */
+.bg-trans {
+  background-color: transparent;
+}
+.bg-02 {
+  background-color: #020202;
+}
+.bg-00 {
+  background-color: black;
+}
+.bg-ff {
+  background-color: white;
+}
+.bg-d9 {
+  background-color: #d9d9d9;
+}
+.bg-ffd {
+  background-color: #ffd800;
+}
+.bg-30 {
+  background-color: #303030;
+}
+.bg-22 {
+  background-color: #222222;
+}
+
+/* TEXT COLOR */
+.trans-color {
+  color: transparent;
+}
+.txt-00 {
+  color: black;
+}
+.txt-ff {
+  color: white;
+}
+.txt-f5 {
+  color: #f5f5f5;
+}
+.txt-fa {
+  color: #fafaff;
+}
+.txt-02 {
+  color: #020202;
+}
+.txt-ffd {
+  color: #ffd800;
+}
+.txt-30 {
+  color: #303030;
+}
+
+/* FONT WEIGHT */
+.fw-300 {
+  font-weight: 300;
+}
+.fw-400 {
+  font-weight: 400;
+}
+.fw-500 {
+  font-weight: 500;
+}
+.fw-600 {
+  font-weight: 600;
+}
+.fw-700 {
+  font-weight: 700;
+}
+.fw-800 {
+  font-weight: 800;
+}
+.fw-900 {
+  font-weight: 900;
+}
+
+/* FONT SIZE */
+.fs-48 {
+  font-size: 29px;
+}
+.fs-19 {
+  font-size: 14px;
+}
+.fs-13 {
+  font-size: 11px;
+}
+.fs-16 {
+  font-size: 12px;
+}
+.fs-23 {
+  font-size: 15px;
+}
+.fs-25 {
+  font-size: 20px;
+}
+.fs-45 {
+  font-size: 26px;
+}
+.fs-32 {
+  font-size: 13px;
+}
+.fs-11 {
+  font-size: 11px;
+}
+.fs-72 {
+  font-size: 31px;
+}
+.fs-83{
+  font-size: 29px;
+}
+.fs-56{
+  font-size: 22px;
+}
+@media (min-width: 768px) {
+  .fs-48 {
+    font-size: 48px;
+  }
+  .fs-19 {
+    font-size: 19px;
+  }
+  .fs-13 {
+    font-size: 13px;
+  }
+  .fs-16 {
+    font-size: 16px;
+  }
+  .fs-23 {
+    font-size: 23px;
+  }
+  .fs-25 {
+    font-size: 25px;
+  }
+  .fs-45 {
+    font-size: 45px;
+  }
+  .fs-32 {
+    font-size: 32px;
+  }
+  .fs-11 {
+    font-size: 11px;
+  }
+  .fs-72 {
+    font-size: 72px;
+  }
+  .fs-83{
+    font-size: 83px;
+  }
+  .fs-56{
+    font-size: 56px;
+  }
+}
+
+/* EXTRA */
+
+.alignSelfCenter{
+  align-self: center;
+}
+.alignSelfStart{
+  align-self: start;
+}
+.alignSelfEnd{
+  align-self: end;
+}
+.spacing-50 {
+  padding: 50px 80px;
+}
+@media (max-width: 768px) {
+  .spacing-50 {
+    padding: 25px 20px;
+  }
+}
+.ff-gro {
+  font-family: "Space Grotesk", sans-serif;
+}
+.paddingButton {
+  padding: 9px 30px;
+}
+@media (min-width: 768px) {
+  .paddingButton {
+    padding: 17px 56px;
+  }
+}
+
+.ff-gro {
+  font-family: "Space Grotesk", sans-serif;
+}

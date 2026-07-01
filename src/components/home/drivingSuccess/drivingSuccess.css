@@ -1,0 +1,59 @@
+/* #greatnessFromSmallBeginnings {
+    width:64px;
+}
+#drivingSuccess1 {
+  width: 172px;
+}
+#drivingSuccess2 {
+  width: 128px;
+}
+#drivingSuccess3 {
+  width: 107px;
+} */
+
+#imgSizing {
+  max-width: 874px;
+  width: 60vw;
+}
+
+#research {
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  border-radius: 15px;
+  padding: 23px;
+  /* max-width: 370px; */
+  max-width: 170px;
+  background-image: url(../../../assets/images/researchNDelivery.png);
+}
+.gaping {
+  height: 158px;
+}
+.sizeAdjustment {
+  max-width: 170px;
+}
+.recentImage {
+  max-width: 372px;
+}
+.recentImageSize {
+  width: 67vw;
+  max-width: 313px;
+}
+@media (min-width: 768px) {
+  #research {
+    max-width: 370px;
+  }
+  .gaping {
+    height: 344px;
+  }
+  .sizeAdjustment {
+    max-width: 370px;
+  }
+  .recentImage {
+    max-width: 550px;
+  }
+  .recentImageSize {
+    max-width: 482px;
+  }
+}

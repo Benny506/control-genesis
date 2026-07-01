@@ -1,0 +1,19 @@
+.footerContainer {
+    padding-top: 40px;
+    background-image: url(../../assets/images/backgroundPattern.png);
+    background-size: 100%;
+    background-repeat: repeat;
+    border: none;
+    /* Slowly pan the background back and forth over 2 minutes */
+    animation: panFooterBg 20s ease-in-out infinite alternate;
+}
+
+@keyframes panFooterBg {
+    0% {
+        background-position: 0% 0%;
+    }
+
+    100% {
+        background-position: 100% 100%;
+    }
+}

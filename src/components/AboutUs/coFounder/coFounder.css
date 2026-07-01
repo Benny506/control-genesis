@@ -1,0 +1,27 @@
+.stayConnectedBackground{
+    background-image: url(../../../assets/images/stayConnected.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-border-radius: 40px;
+    -moz-border-radius: 40px;
+    -ms-border-radius: 40px;
+    -o-border-radius: 40px;
+    border-radius: 40px;
+}
+.foundersImage{
+    max-width:374px;
+    width: 65vw;
+}
+
+/* coFounder.css */
+
+.fade-and-slide {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-and-slide.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
