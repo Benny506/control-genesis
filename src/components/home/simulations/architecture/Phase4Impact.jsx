@@ -19,33 +19,33 @@ export default function Phase4Impact({ scrollYProgress }) {
   const textY = useTransform(scrollYProgress, [0.68, 0.70], [50, 0]);
   
   // --- SEAMLESS EXPANSION AND SQUEEZE ---
-  const dashWidth = useTransform(scrollYProgress, [0.68, 0.71, 0.76, 0.81], isMobile ? ["100%", "100%", "100%", "85%"] : ["50%", "100%", "100%", "30%"]);
+  const dashWidth = useTransform(scrollYProgress, [0.68, 0.70, 0.73, 0.76], isMobile ? ["100%", "100%", "100%", "85%"] : ["50%", "100%", "100%", "30%"]);
   
   // Mobile layout adaptations
-  const leftSpacerWidth = useTransform(scrollYProgress, [0.68, 0.71, 0.76, 0.81], isMobile ? ["0%", "0%", "0%", "7.5%"] : ["50%", "0%", "0%", "60%"]);
-  const gapSpace = useTransform(scrollYProgress, [0.68, 0.71], ["1.5rem", "0rem"]);
-  const mainHeight = useTransform(scrollYProgress, [0.68, 0.71, 0.76, 0.81], isMobile ? ["50vh", "55vh", "55vh", "55vh"] : ["55vh", "70vh", "70vh", "85vh"]);
-  const headerHeight = useTransform(scrollYProgress, [0.68, 0.71], ["45px", "70px"]);
-  const innerScale = useTransform(scrollYProgress, [0.68, 0.71], [0.95, 1]);
-  const containerBorderRadius = useTransform(scrollYProgress, [0.76, 0.81], ["1rem", "2.5rem"]);
+  const leftSpacerWidth = useTransform(scrollYProgress, [0.68, 0.70, 0.73, 0.76], isMobile ? ["0%", "0%", "0%", "7.5%"] : ["50%", "0%", "0%", "60%"]);
+  const gapSpace = useTransform(scrollYProgress, [0.68, 0.70], ["1.5rem", "0rem"]);
+  const mainHeight = useTransform(scrollYProgress, [0.68, 0.70, 0.73, 0.76], isMobile ? ["50vh", "55vh", "55vh", "55vh"] : ["55vh", "70vh", "70vh", "85vh"]);
+  const headerHeight = useTransform(scrollYProgress, [0.68, 0.70], ["45px", "70px"]);
+  const innerScale = useTransform(scrollYProgress, [0.68, 0.70], [0.95, 1]);
+  const containerBorderRadius = useTransform(scrollYProgress, [0.73, 0.76], ["1rem", "2.5rem"]);
 
   // Mobile Notch and Dots
-  const notchOpacity = useTransform(scrollYProgress, [0.76, 0.81], [0, 1]);
-  const browserDotsOpacity = useTransform(scrollYProgress, [0.76, 0.78], [1, 0]);
-  const searchOpacity = useTransform(scrollYProgress, [0.76, 0.78], [1, 0]);
+  const notchOpacity = useTransform(scrollYProgress, [0.73, 0.76], [0, 1]);
+  const browserDotsOpacity = useTransform(scrollYProgress, [0.73, 0.74], [1, 0]);
+  const searchOpacity = useTransform(scrollYProgress, [0.73, 0.74], [1, 0]);
 
   // --- TEXT ANIMATIONS ---
-  const desktopTextOpacity = useTransform(scrollYProgress, [0.71, 0.72, 0.76, 0.78], [0, 1, 1, 0]);
-  const desktopTextY = useTransform(scrollYProgress, [0.71, 0.72], [30, 0]);
+  const desktopTextOpacity = useTransform(scrollYProgress, [0.70, 0.71, 0.73, 0.74], [0, 1, 1, 0]);
+  const desktopTextY = useTransform(scrollYProgress, [0.70, 0.71], [30, 0]);
 
-  const mobileTextOpacity = useTransform(scrollYProgress, [0.78, 0.81], [0, 1]);
-  const mobileTextY = useTransform(scrollYProgress, [0.78, 0.81], [30, 0]);
+  const mobileTextOpacity = useTransform(scrollYProgress, [0.74, 0.76], [0, 1]);
+  const mobileTextY = useTransform(scrollYProgress, [0.74, 0.76], [30, 0]);
 
   // --- UI CROSSFADE ---
-  const desktopOpacity = useTransform(scrollYProgress, [0.76, 0.79], [1, 0]);
-  const mobileOpacity = useTransform(scrollYProgress, [0.79, 0.81, 0.84, 0.84], [0, 1, 1, 1]);
+  const desktopOpacity = useTransform(scrollYProgress, [0.73, 0.75], [1, 0]);
+  const mobileOpacity = useTransform(scrollYProgress, [0.75, 0.77, 0.78, 0.78], [0, 1, 1, 1]);
 
-  const finalGlow = useTransform(scrollYProgress, [0.81, 0.84], [0, 1]);
+  const finalGlow = useTransform(scrollYProgress, [0.76, 0.78], [0, 1]);
 
   return (
     <motion.div
