@@ -21,7 +21,7 @@ export default function Phase4Impact({ scrollYProgress }) {
   const leftSpacerWidth = useTransform(scrollYProgress, [0.82, 0.85, 0.90, 0.95], isMobile ? ["0%", "0%", "0%", "7.5%"] : ["50%", "0%", "0%", "60%"]);
   const gapSpace = useTransform(scrollYProgress, [0.82, 0.85], ["1.5rem", "0rem"]);
   // Make the phone taller than the desktop
-  const mainHeight = useTransform(scrollYProgress, [0.82, 0.85, 0.90, 0.95], isMobile ? ["55vh", "60vh", "60vh", "65vh"] : ["55vh", "70vh", "70vh", "85vh"]);
+  const mainHeight = useTransform(scrollYProgress, [0.82, 0.85, 0.90, 0.95], isMobile ? ["50vh", "55vh", "55vh", "55vh"] : ["55vh", "70vh", "70vh", "85vh"]);
   const headerHeight = useTransform(scrollYProgress, [0.82, 0.85], ["45px", "70px"]);
   const innerScale = useTransform(scrollYProgress, [0.82, 0.85], [0.95, 1]);
   const containerBorderRadius = useTransform(scrollYProgress, [0.90, 0.95], ["1rem", "2.5rem"]);
@@ -71,7 +71,7 @@ export default function Phase4Impact({ scrollYProgress }) {
         <p className={`txt-f5 ${isMobile ? 'fs-16' : 'fs-19'} mt-3`}>Flawless execution. Production ready. Highly interactive.</p>
       </motion.div>
 
-      <motion.div className="d-flex w-100 px-3 px-md-5 z-3 position-relative" style={{ maxWidth: '1400px', height: mainHeight, gap: gapSpace, marginTop: isMobile ? '60px' : '100px' }}>
+      <motion.div className="d-flex w-100 px-3 px-md-5 z-3 position-relative" style={{ maxWidth: '1400px', height: mainHeight, gap: gapSpace, marginTop: isMobile ? '120px' : '100px' }}>
         <motion.div style={{ width: leftSpacerWidth, minWidth: leftSpacerWidth }}></motion.div>
 
         {/* The Dashboard App (Dark Mode) */}

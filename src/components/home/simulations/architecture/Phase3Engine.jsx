@@ -28,7 +28,7 @@ export default function Phase3Engine({ scrollYProgress }) {
       </div>
 
       {/* Main Layout Container */}
-      <div className={`d-flex ${isMobile ? 'flex-column' : 'flex-row'} gap-4 w-100 px-3 px-md-5`} style={{ maxWidth: '1400px', height: isMobile ? '85vh' : '65vh' }}>
+      <div className={`d-flex ${isMobile ? 'flex-column' : 'flex-row'} gap-4 w-100 px-3 px-md-5`} style={{ maxWidth: '1400px', height: isMobile ? '75vh' : '65vh' }}>
         <Phase3Ide scrollYProgress={scrollYProgress} isMobile={isMobile} />
         <Phase3Preview scrollYProgress={scrollYProgress} isMobile={isMobile} />
       </div>

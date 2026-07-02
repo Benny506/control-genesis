@@ -64,9 +64,9 @@ function Hero() {
   const currentData = variations[variationIndex];
 
   return (
-    <div className="overflow-hidden" style={{ position: 'sticky', top: 0, height: '125vh', zIndex: 0 }}>
+    <div className="overflow-hidden" style={{ position: 'sticky', top: 0, height: '100vh', zIndex: 0 }}>
       {/* Background Element */}
-      <div className="position-absolute w-100 h-100" style={{ top: '-20%', left: 0, zIndex: 0, opacity: 0.1, background: "radial-gradient(circle at center, #ffd800 0%, transparent 60%)" }}></div>
+      <div className="position-absolute w-100 h-100" style={{ top: 0, left: 0, zIndex: 0, opacity: 0.1, background: "radial-gradient(circle at center, #ffd800 0%, transparent 60%)" }}></div>
 
       <div className="container position-relative text-center d-flex flex-column justify-content-center align-items-center h-100" style={{ zIndex: 1 }}>
 
