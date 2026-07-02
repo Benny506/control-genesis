@@ -74,7 +74,7 @@ function ArchitectureFlow() {
         {/* Sticky Cinematic Viewport */}
         <div
           className="sticky-top w-100 overflow-hidden d-flex align-items-center justify-content-center"
-          style={{ height: '100vh', background: '#050505' }}
+          style={{ height: '100svh', background: '#050505' }}
         >
           {/* Static Loading Screen */}
           <motion.div
@@ -101,7 +101,7 @@ function ArchitectureFlow() {
       <div ref={phase5Ref} style={{ height: '500vh', position: 'relative' }}>
         <div
           className="sticky-top w-100 overflow-hidden d-flex align-items-center justify-content-center"
-          style={{ height: '100vh', background: '#050505' }}
+          style={{ height: '100svh', background: '#050505' }}
         >
           {/* Static Outro Screen */}
           <motion.div
