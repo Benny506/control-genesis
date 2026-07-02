@@ -3,46 +3,38 @@ import { motion, useTransform } from 'framer-motion';
 
 export default function Phase3Preview({ scrollYProgress, isMobile = false }) {
   // --- RESPONSIVE WIDTH ANIMATION ---
-  // Sprint 1 (Auth) = Desktop (100% of half screen)
-  // Sprint 2 (Profile, 0.59-0.69) = Mobile (35% width on desktop, 85% on mobile)
-  // Sprint 3 (Dashboard, 0.69-0.80) = Desktop
+  // Sprint 1 (Profile) = Mobile (35% width on desktop, 85% on mobile)
+  // Sprint 2 (Dashboard) = Desktop
   const containerWidth = useTransform(
     scrollYProgress, 
-    [0.57, 0.59, 0.67, 0.69], 
+    [0.50, 0.51, 0.57, 0.58], 
     ["100%", isMobile ? "85%" : "38%", isMobile ? "85%" : "38%", "100%"]
   );
   // Optional notch for mobile layout
   const notchOpacity = useTransform(
     scrollYProgress, 
-    [0.58, 0.59, 0.67, 0.68], 
+    [0.50, 0.51, 0.57, 0.58], 
     [0, 1, 1, 0]
   );
   const containerBorderRadius = useTransform(
     scrollYProgress, 
-    [0.57, 0.59, 0.67, 0.69], 
+    [0.50, 0.51, 0.57, 0.58], 
     ["1rem", "2.5rem", "2.5rem", "1rem"] // more rounded for phone
   );
 
   // ==================
-  // SPRINT 1: AUTH (0.49 - 0.59)
+  // SPRINT 1: PROFILE (0.49 - 0.58)
   // ==================
-  const previewAuthSkeleton = useTransform(scrollYProgress, [0.50, 0.51, 0.58, 0.59], [0, 1, 1, 0]);
-  const previewAuthError = useTransform(scrollYProgress, [0.53, 0.54, 0.57, 0.58], [0, 1, 1, 0]);
-  const previewAuthUI = useTransform(scrollYProgress, [0.58, 0.59, 0.60, 0.61], [0, 1, 1, 0]);
+  const previewProfileSkeleton = useTransform(scrollYProgress, [0.50, 0.51, 0.54, 0.55], [0, 1, 1, 0]);
+  const previewProfileUI = useTransform(scrollYProgress, [0.54, 0.55, 0.58, 0.59], [0, 1, 1, 0]);
 
   // ==================
-  // SPRINT 2: PROFILE (0.59 - 0.69)
+  // SPRINT 2: DASHBOARD (0.59 - 0.70)
   // ==================
-  const previewProfileSkeleton = useTransform(scrollYProgress, [0.61, 0.62, 0.66, 0.67], [0, 1, 1, 0]);
-  const previewProfileUI = useTransform(scrollYProgress, [0.66, 0.67, 0.70, 0.71], [0, 1, 1, 0]);
-
-  // ==================
-  // SPRINT 3: DASHBOARD (0.69 - 0.80)
-  // ==================
-  const previewDashSkeleton = useTransform(scrollYProgress, [0.71, 0.72, 0.78, 0.79], [0, 1, 1, 0]);
-  const previewDashError = useTransform(scrollYProgress, [0.74, 0.75, 0.77, 0.78], [0, 1, 1, 0]);
+  const previewDashSkeleton = useTransform(scrollYProgress, [0.59, 0.61, 0.65, 0.66], [0, 1, 1, 0]);
+  const previewDashError = useTransform(scrollYProgress, [0.63, 0.64, 0.65, 0.66], [0, 1, 1, 0]);
   // We leave it at 1 for the seamless transition to Phase 4
-  const previewDashUI = useTransform(scrollYProgress, [0.78, 0.79, 0.82, 0.83], [0, 1, 1, 1]);
+  const previewDashUI = useTransform(scrollYProgress, [0.67, 0.68, 0.72, 0.73], [0, 1, 1, 1]);
 
   return (
     <div className="d-flex justify-content-center align-items-center h-100" style={{ width: isMobile ? '100%' : '50%', flex: 1 }}>
@@ -75,33 +67,7 @@ export default function Phase3Preview({ scrollYProgress, isMobile = false }) {
         {/* Browser Viewport (Dark Mode) */}
         <div className="flex-grow-1 position-relative overflow-hidden" style={{ background: '#0a0a0c' }}>
           
-          {/* --- SPRINT 1: AUTH PREVIEW (Dark Mode) --- */}
-          <motion.div className="position-absolute w-100 h-100 p-4 d-flex align-items-center justify-content-center" style={{ opacity: previewAuthSkeleton }}>
-             <div className="bg-white bg-opacity-10 rounded-4 w-75 h-75 d-flex flex-column p-4 gap-3 align-items-center justify-content-center border border-white border-opacity-10">
-                <div className="w-50 bg-white bg-opacity-25 rounded mb-3" style={{ height: '30px' }}></div>
-                <div className="w-100 bg-white bg-opacity-10 rounded" style={{ height: '40px' }}></div>
-                <div className="w-100 bg-white bg-opacity-10 rounded" style={{ height: '40px' }}></div>
-             </div>
-          </motion.div>
-
-          <motion.div className="position-absolute w-100 h-100 p-4 d-flex flex-column justify-content-center" style={{ opacity: previewAuthError, background: '#2d1114', color: '#ff6b6b' }}>
-            <h3 className="fw-bold mb-3 ff-mono fs-18">Build Error</h3>
-            <div className="p-3 rounded border border-danger border-opacity-50 shadow-sm fs-14 ff-mono" style={{ background: '#1a0507' }}>
-              SyntaxError: Unterminated JSX contents. (Auth.jsx)
-            </div>
-          </motion.div>
-
-          <motion.div className="position-absolute w-100 h-100 p-4 d-flex align-items-center justify-content-center" style={{ opacity: previewAuthUI, background: '#0a0a0c' }}>
-             <div className="rounded-4 w-75 shadow-sm p-4 text-center border border-white border-opacity-10" style={{ background: '#111116' }}>
-                <h4 className="fw-bold text-white mb-4">Welcome Back</h4>
-                <div className="w-100 border border-secondary border-opacity-25 rounded p-2 mb-3 text-start text-muted bg-dark">Email Address</div>
-                <div className="w-100 border border-secondary border-opacity-25 rounded p-2 mb-4 text-start text-muted bg-dark">Password</div>
-                <div className="w-100 bg-info rounded p-2 text-dark fw-bold shadow-sm">Sign In</div>
-             </div>
-          </motion.div>
-
-
-          {/* --- SPRINT 2: PROFILE PREVIEW (Mobile Dark Mode) --- */}
+          {/* --- SPRINT 1: PROFILE PREVIEW (Mobile Dark Mode) --- */}
           <motion.div className="position-absolute w-100 h-100 p-4" style={{ opacity: previewProfileSkeleton }}>
              <div className="d-flex flex-column gap-4 align-items-center mb-5 mt-4">
                <div className="rounded-circle bg-white bg-opacity-25" style={{ width: '80px', height: '80px' }}></div>
@@ -133,7 +99,7 @@ export default function Phase3Preview({ scrollYProgress, isMobile = false }) {
           </motion.div>
 
 
-          {/* --- SPRINT 3: DASHBOARD PREVIEW (Dark Mode) --- */}
+          {/* --- SPRINT 2: DASHBOARD PREVIEW (Dark Mode) --- */}
           <motion.div className="position-absolute w-100 h-100 p-4" style={{ opacity: previewDashSkeleton }}>
             <div className="w-25 bg-white bg-opacity-25 rounded mb-4" style={{ height: '24px' }}></div>
             <div className="d-flex gap-3 mb-4">

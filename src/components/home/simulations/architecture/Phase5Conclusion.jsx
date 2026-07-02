@@ -34,8 +34,8 @@ export default function Phase5Conclusion({ scrollYProgress, avatarClient, avatar
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Master opacity
-  const phase5Opacity = useTransform(scrollYProgress, [0, 0.1, 0.9, 1.0], [0, 1, 1, 0]);
+  // Master opacity (Starts at 1 so it seamlessly scrolls into view under Phase 4)
+  const phase5Opacity = useTransform(scrollYProgress, [0, 0.7, 0.8], [1, 1, 0]);
 
   // Message 1 (Dev)
   const chat1Y = useTransform(scrollYProgress, [0.1, 0.2], [50, 0]);

@@ -4,37 +4,26 @@ import { FiTerminal, FiAlertCircle, FiCheck, FiLayout, FiUser, FiLock } from 're
 
 export default function Phase3Ide({ scrollYProgress, isMobile = false }) {
   // ==================
-  // SPRINT 1: AUTH (0.49 - 0.59)
+  // SPRINT 1: PROFILE (0.49 - 0.58)
   // ==================
-  const authTabOpacity = useTransform(scrollYProgress, [0.48, 0.49, 0.59, 0.60], [0, 1, 1, 0]);
-  const authCode1 = useTransform(scrollYProgress, [0.49, 0.50], [0, 1]);
-  const authCode2 = useTransform(scrollYProgress, [0.50, 0.51], [0, 1]);
-  const authCodeError = useTransform(scrollYProgress, [0.51, 0.53, 0.56, 0.57], [0, 1, 1, 0]);
-  const authCodeFixed = useTransform(scrollYProgress, [0.57, 0.58], [0, 1]);
-  const authTermError = useTransform(scrollYProgress, [0.53, 0.54, 0.57, 0.58], [0, 1, 1, 0]);
-  const authTermSuccess = useTransform(scrollYProgress, [0.58, 0.59, 0.60, 0.61], [0, 1, 1, 0]);
+  const profileTabOpacity = useTransform(scrollYProgress, [0.48, 0.49, 0.58, 0.59], [0, 1, 1, 0]);
+  const profileCode1 = useTransform(scrollYProgress, [0.49, 0.50], [0, 1]);
+  const profileCode2 = useTransform(scrollYProgress, [0.50, 0.51], [0, 1]);
+  const profileCode3 = useTransform(scrollYProgress, [0.51, 0.52], [0, 1]);
+  const profileCode4 = useTransform(scrollYProgress, [0.52, 0.53], [0, 1]);
+  const profileTermSuccess = useTransform(scrollYProgress, [0.53, 0.54, 0.59, 0.60], [0, 1, 1, 0]);
 
   // ==================
-  // SPRINT 2: PROFILE (0.59 - 0.69)
+  // SPRINT 2: DASHBOARD (0.59 - 0.70)
   // ==================
-  const profileTabOpacity = useTransform(scrollYProgress, [0.59, 0.60, 0.69, 0.70], [0, 1, 1, 0]);
-  const profileCode1 = useTransform(scrollYProgress, [0.60, 0.61], [0, 1]);
-  const profileCode2 = useTransform(scrollYProgress, [0.61, 0.62], [0, 1]);
-  const profileCode3 = useTransform(scrollYProgress, [0.62, 0.63], [0, 1]);
-  const profileCode4 = useTransform(scrollYProgress, [0.63, 0.64], [0, 1]);
-  const profileTermSuccess = useTransform(scrollYProgress, [0.65, 0.66, 0.70, 0.71], [0, 1, 1, 0]);
-
-  // ==================
-  // SPRINT 3: DASHBOARD (0.69 - 0.80)
-  // ==================
-  const dashTabOpacity = useTransform(scrollYProgress, [0.69, 0.70, 0.82, 0.83], [0, 1, 1, 1]);
-  const dashCode1 = useTransform(scrollYProgress, [0.70, 0.71], [0, 1]);
-  const dashCode2 = useTransform(scrollYProgress, [0.71, 0.72], [0, 1]);
-  const dashCodeError = useTransform(scrollYProgress, [0.72, 0.74, 0.76, 0.77], [0, 1, 1, 0]);
-  const dashSquiggly = useTransform(scrollYProgress, [0.74, 0.75, 0.76, 0.77], [0, 1, 1, 0]);
-  const dashCodeFixed = useTransform(scrollYProgress, [0.77, 0.78], [0, 1]);
-  const dashTermError = useTransform(scrollYProgress, [0.74, 0.75, 0.77, 0.78], [0, 1, 1, 0]);
-  const dashTermSuccess = useTransform(scrollYProgress, [0.78, 0.79, 0.82, 0.83], [0, 1, 1, 1]);
+  const dashTabOpacity = useTransform(scrollYProgress, [0.58, 0.59, 0.72, 0.73], [0, 1, 1, 1]);
+  const dashCode1 = useTransform(scrollYProgress, [0.59, 0.60], [0, 1]);
+  const dashCode2 = useTransform(scrollYProgress, [0.60, 0.61], [0, 1]);
+  const dashCodeError = useTransform(scrollYProgress, [0.61, 0.63, 0.66, 0.67], [0, 1, 1, 0]);
+  const dashSquiggly = useTransform(scrollYProgress, [0.63, 0.64, 0.66, 0.67], [0, 1, 1, 0]);
+  const dashCodeFixed = useTransform(scrollYProgress, [0.67, 0.68], [0, 1]);
+  const dashTermError = useTransform(scrollYProgress, [0.63, 0.64, 0.67, 0.68], [0, 1, 1, 0]);
+  const dashTermSuccess = useTransform(scrollYProgress, [0.68, 0.69, 0.72, 0.73], [0, 1, 1, 1]);
 
   const termIdleOpacity = useTransform(scrollYProgress, [0.49, 0.52], [1, 0]);
 
@@ -48,10 +37,6 @@ export default function Phase3Ide({ scrollYProgress, isMobile = false }) {
           <div className="rounded-circle bg-success" style={{ width: '12px', height: '12px' }}></div>
         </div>
         
-        <motion.div className="position-absolute px-3 py-2 bg-dark rounded-top text-white text-opacity-75 fs-14 ff-mono" style={{ opacity: authTabOpacity, bottom: 0, left: '90px', borderTop: '1px solid #333', borderRight: '1px solid #333', borderLeft: '1px solid #333' }}>
-          <FiLock className="me-2"/>Auth.jsx
-        </motion.div>
-        
         <motion.div className="position-absolute px-3 py-2 bg-dark rounded-top text-white text-opacity-75 fs-14 ff-mono" style={{ opacity: profileTabOpacity, bottom: 0, left: '90px', borderTop: '1px solid #333', borderRight: '1px solid #333', borderLeft: '1px solid #333' }}>
           <FiUser className="me-2"/>Profile.jsx
         </motion.div>
@@ -64,35 +49,7 @@ export default function Phase3Ide({ scrollYProgress, isMobile = false }) {
       {/* Code Area */}
       <div className={`flex-grow-1 p-3 p-md-4 ff-mono ${isMobile ? 'fs-12' : 'fs-15'} position-relative overflow-hidden`} style={{ lineHeight: '1.8', color: '#abb2bf' }}>
         
-        {/* SPRINT 1: AUTH CODE */}
-        <motion.div style={{ opacity: authTabOpacity }} className="position-absolute w-100 h-100 top-0 start-0 p-4">
-          <motion.div style={{ opacity: authCode1 }}>
-            <span style={{ color: '#c678dd' }}>export default function</span> <span style={{ color: '#61afef' }}>Login</span>() {`{`}
-          </motion.div>
-          <motion.div style={{ opacity: authCode2 }}>
-            &nbsp;&nbsp;<span style={{ color: '#c678dd' }}>return</span> (
-          </motion.div>
-          <div className="position-relative" style={{ height: '5rem' }}>
-            <motion.div className="position-absolute w-100" style={{ opacity: authCodeError }}>
-              &nbsp;&nbsp;&nbsp;&nbsp;&lt;<span style={{ color: '#e06c75' }}>form</span>&gt;
-              <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span style={{ color: '#e06c75' }}>Input</span> <span style={{ color: '#d19a66' }}>type</span>=<span style={{ color: '#98c379' }}>"email"</span> /&gt;
-              <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span style={{ color: '#e06c75' }}>Button</span>&gt;Sign In&lt;/<span style={{ color: '#e06c75' }}>Button</span>&gt;
-              <br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style={{ color: '#5c6370', fontStyle: 'italic' }}>// SyntaxError: Unterminated JSX contents</span>
-            </motion.div>
-            <motion.div className="position-absolute w-100" style={{ opacity: authCodeFixed }}>
-              &nbsp;&nbsp;&nbsp;&nbsp;&lt;<span style={{ color: '#e06c75' }}>form</span>&gt;
-              <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span style={{ color: '#e06c75' }}>Input</span> <span style={{ color: '#d19a66' }}>type</span>=<span style={{ color: '#98c379' }}>"email"</span> /&gt;
-              <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span style={{ color: '#e06c75' }}>Button</span>&gt;Sign In&lt;/<span style={{ color: '#e06c75' }}>Button</span>&gt;
-              <br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span style={{ color: '#e06c75' }}>form</span>&gt;
-            </motion.div>
-          </div>
-          <motion.div style={{ opacity: authCode2 }}>
-            &nbsp;&nbsp;)
-            <br/>{`}`}
-          </motion.div>
-        </motion.div>
-
-        {/* SPRINT 2: PROFILE CODE */}
+        {/* SPRINT 1: PROFILE CODE */}
         <motion.div style={{ opacity: profileTabOpacity }} className="position-absolute w-100 h-100 top-0 start-0 p-4">
           <motion.div style={{ opacity: profileCode1 }}>
             <span style={{ color: '#c678dd' }}>export default function</span> <span style={{ color: '#61afef' }}>UserProfile</span>() {`{`}
@@ -113,7 +70,7 @@ export default function Phase3Ide({ scrollYProgress, isMobile = false }) {
           </motion.div>
         </motion.div>
 
-        {/* SPRINT 3: DASHBOARD CODE */}
+        {/* SPRINT 2: DASHBOARD CODE */}
         <motion.div style={{ opacity: dashTabOpacity }} className="position-absolute w-100 h-100 top-0 start-0 p-4">
           <motion.div style={{ opacity: dashCode1 }}>
             <span style={{ color: '#c678dd' }}>export default function</span> <span style={{ color: '#61afef' }}>Dashboard</span>({`{ data }`}) {`{`}
@@ -155,16 +112,6 @@ export default function Phase3Ide({ scrollYProgress, isMobile = false }) {
           <div>$ npm run dev</div>
           <div className="txt-success">ready - started server on 0.0.0.0:3000</div>
           <div>wait  - compiling...</div>
-        </motion.div>
-        <motion.div className={`position-absolute w-100 h-100 p-2 p-md-3 ff-mono ${isMobile ? 'fs-12' : 'fs-14'}`} style={{ opacity: authTermError, background: 'rgba(224, 108, 117, 0.1)' }}>
-          <div className="d-flex align-items-center gap-2 mb-2 txt-danger fw-bold"><FiAlertCircle /> <span>Failed to compile</span></div>
-          <div className="txt-danger">./src/Auth.jsx:6:4</div>
-          <div className="txt-ff opacity-75">SyntaxError: Unterminated JSX contents.</div>
-          <div className="txt-ff opacity-50">&gt; 6 |   return ( &lt;form&gt; ...</div>
-        </motion.div>
-        <motion.div className={`position-absolute w-100 h-100 p-2 p-md-3 ff-mono ${isMobile ? 'fs-12' : 'fs-14'}`} style={{ opacity: authTermSuccess, background: 'rgba(152, 195, 121, 0.1)' }}>
-          <div className="d-flex align-items-center gap-2 mb-2 txt-success fw-bold"><FiCheck /> <span>Compiled successfully!</span></div>
-          <div className="txt-success opacity-75">✓ Hot reloaded Auth.jsx in 84ms.</div>
         </motion.div>
         <motion.div className={`position-absolute w-100 h-100 p-2 p-md-3 ff-mono ${isMobile ? 'fs-12' : 'fs-14'}`} style={{ opacity: profileTermSuccess, background: 'rgba(152, 195, 121, 0.1)' }}>
           <div className="d-flex align-items-center gap-2 mb-2 txt-success fw-bold"><FiCheck /> <span>Compiled successfully!</span></div>

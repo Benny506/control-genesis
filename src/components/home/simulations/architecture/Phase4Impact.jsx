@@ -12,39 +12,40 @@ export default function Phase4Impact({ scrollYProgress }) {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Global opacity (fades in exactly when Phase 3 fades out at 0.80 - 0.82)
-  const phase4Opacity = useTransform(scrollYProgress, [0.80, 0.82, 1, 1], [0, 1, 1, 1]);
-
-  // --- SEAMLESS EXPANSION (0.82 - 0.85) AND SQUEEZE (0.90 - 0.95) ---
-  const dashWidth = useTransform(scrollYProgress, [0.82, 0.85, 0.90, 0.95], isMobile ? ["100%", "100%", "100%", "85%"] : ["50%", "100%", "100%", "30%"]);
-  // Push the shrinking container back to the center for desktop, then to the right for mobile
-  const leftSpacerWidth = useTransform(scrollYProgress, [0.82, 0.85, 0.90, 0.95], isMobile ? ["0%", "0%", "0%", "7.5%"] : ["50%", "0%", "0%", "60%"]);
-  const gapSpace = useTransform(scrollYProgress, [0.82, 0.85], ["1.5rem", "0rem"]);
-  // Make the phone taller than the desktop
-  const mainHeight = useTransform(scrollYProgress, [0.82, 0.85, 0.90, 0.95], isMobile ? ["50vh", "55vh", "55vh", "55vh"] : ["55vh", "70vh", "70vh", "85vh"]);
-  const headerHeight = useTransform(scrollYProgress, [0.82, 0.85], ["45px", "70px"]);
-  const innerScale = useTransform(scrollYProgress, [0.82, 0.85], [0.95, 1]);
-  const containerBorderRadius = useTransform(scrollYProgress, [0.90, 0.95], ["1rem", "2.5rem"]);
+  // Global opacity (Stays at 1 so it scrolls up naturally at the end)
+  const phase4Opacity = useTransform(scrollYProgress, [0.68, 0.70], [0, 1]);
+  const phase4Scale = useTransform(scrollYProgress, [0.68, 0.70], [0.8, 1]);
+  
+  const textY = useTransform(scrollYProgress, [0.68, 0.70], [50, 0]);
+  
+  // --- SEAMLESS EXPANSION AND SQUEEZE ---
+  const dashWidth = useTransform(scrollYProgress, [0.68, 0.71, 0.76, 0.81], isMobile ? ["100%", "100%", "100%", "85%"] : ["50%", "100%", "100%", "30%"]);
+  
+  // Mobile layout adaptations
+  const leftSpacerWidth = useTransform(scrollYProgress, [0.68, 0.71, 0.76, 0.81], isMobile ? ["0%", "0%", "0%", "7.5%"] : ["50%", "0%", "0%", "60%"]);
+  const gapSpace = useTransform(scrollYProgress, [0.68, 0.71], ["1.5rem", "0rem"]);
+  const mainHeight = useTransform(scrollYProgress, [0.68, 0.71, 0.76, 0.81], isMobile ? ["50vh", "55vh", "55vh", "55vh"] : ["55vh", "70vh", "70vh", "85vh"]);
+  const headerHeight = useTransform(scrollYProgress, [0.68, 0.71], ["45px", "70px"]);
+  const innerScale = useTransform(scrollYProgress, [0.68, 0.71], [0.95, 1]);
+  const containerBorderRadius = useTransform(scrollYProgress, [0.76, 0.81], ["1rem", "2.5rem"]);
 
   // Mobile Notch and Dots
-  const notchOpacity = useTransform(scrollYProgress, [0.90, 0.95], [0, 1]);
-  const browserDotsOpacity = useTransform(scrollYProgress, [0.90, 0.92], [1, 0]);
-  const searchOpacity = useTransform(scrollYProgress, [0.90, 0.92], [1, 0]);
+  const notchOpacity = useTransform(scrollYProgress, [0.76, 0.81], [0, 1]);
+  const browserDotsOpacity = useTransform(scrollYProgress, [0.76, 0.78], [1, 0]);
+  const searchOpacity = useTransform(scrollYProgress, [0.76, 0.78], [1, 0]);
 
   // --- TEXT ANIMATIONS ---
-  // Desktop text (Title only, centered)
-  const desktopTextOpacity = useTransform(scrollYProgress, [0.85, 0.86, 0.90, 0.92], [0, 1, 1, 0]);
-  const desktopTextY = useTransform(scrollYProgress, [0.85, 0.86], [30, 0]);
+  const desktopTextOpacity = useTransform(scrollYProgress, [0.71, 0.72, 0.76, 0.78], [0, 1, 1, 0]);
+  const desktopTextY = useTransform(scrollYProgress, [0.71, 0.72], [30, 0]);
 
-  // Mobile text (Title + Description, left aligned)
-  const mobileTextOpacity = useTransform(scrollYProgress, [0.92, 0.95], [0, 1]);
-  const mobileTextY = useTransform(scrollYProgress, [0.92, 0.95], [30, 0]);
+  const mobileTextOpacity = useTransform(scrollYProgress, [0.78, 0.81], [0, 1]);
+  const mobileTextY = useTransform(scrollYProgress, [0.78, 0.81], [30, 0]);
 
   // --- UI CROSSFADE ---
-  const desktopOpacity = useTransform(scrollYProgress, [0.90, 0.93], [1, 0]);
-  const mobileOpacity = useTransform(scrollYProgress, [0.93, 0.95, 0.99, 1.0], [0, 1, 1, 1]);
+  const desktopOpacity = useTransform(scrollYProgress, [0.76, 0.79], [1, 0]);
+  const mobileOpacity = useTransform(scrollYProgress, [0.79, 0.81, 0.84, 0.84], [0, 1, 1, 1]);
 
-  const finalGlow = useTransform(scrollYProgress, [0.95, 0.98], [0, 1]);
+  const finalGlow = useTransform(scrollYProgress, [0.81, 0.84], [0, 1]);
 
   return (
     <motion.div

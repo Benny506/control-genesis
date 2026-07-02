@@ -14,7 +14,7 @@ export default function Phase3Engine({ scrollYProgress }) {
   }, []);
 
   // Global Entry / Exit
-  const phase3Opacity = useTransform(scrollYProgress, [0.47, 0.49, 0.80, 0.82], [0, 1, 1, 0]);
+  const phase3Opacity = useTransform(scrollYProgress, [0.47, 0.49, 0.68, 0.70], [0, 1, 1, 0]);
   const phase3Scale = useTransform(scrollYProgress, [0.47, 0.49], [0.8, 1]);
 
   return (

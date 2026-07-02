@@ -23,6 +23,10 @@ function ArchitectureFlow() {
     offset: ["start start", "end end"]
   });
 
+  // Since we removed the Auth phase and compressed the timeline, Phase 4 finishes at exactly 0.84.
+  // We map the 0->1 scroll to 0->0.84 so that the container ends right as Phase 4 fades out, eliminating any dead space.
+  const mappedProgress = useTransform(scrollYProgress, [0, 1], [0, 0.84]);
+
   // Intro transition to cover the blank space
   const introOpacity = useTransform(scrollYProgress, [0, 0.01], [1, 0]);
 
@@ -70,7 +74,7 @@ function ArchitectureFlow() {
 
   return (
     <>
-      <div id="architecture-start" ref={containerRef} style={{ height: '1500vh', position: 'relative' }}>
+      <div id="architecture-start" ref={containerRef} style={{ height: '1000vh', position: 'relative' }}>
         {/* Sticky Cinematic Viewport */}
         <div
           className="sticky-top w-100 overflow-hidden d-flex align-items-center justify-content-center"
@@ -84,17 +88,17 @@ function ArchitectureFlow() {
             <div style={{ width: '280px', height: '280px' }}>
               <Lottie animationData={devSkillsLottie} loop={true} />
             </div>
-            <h3 className="txt-ff fw-700 ff-gro mt-3, text-center" style={{ fontSize: '3rem', letterSpacing: '-1px' }}>Curious how we operate?</h3>
+            <h3 className="txt-ff fw-700 ff-gro mt-3 text-center" style={{ fontSize: '3rem', letterSpacing: '-1px' }}>Curious how we operate?</h3>
             <p className="txt-f5 fs-18 mt-2 ff-mono text-light text-center">Scroll down to explore our architectural flow...</p>
           </motion.div>
 
-          <Phase1Spark scrollYProgress={scrollYProgress} avatarClient={avatarClient} avatarDev={avatarDev} />
+          <Phase1Spark scrollYProgress={mappedProgress} avatarClient={avatarClient} avatarDev={avatarDev} />
 
-          <Phase2Blueprint scrollYProgress={scrollYProgress} uiAnimation={uiAnimation} />
+          <Phase2Blueprint scrollYProgress={mappedProgress} uiAnimation={uiAnimation} />
 
-          <Phase3Engine scrollYProgress={scrollYProgress} />
+          <Phase3Engine scrollYProgress={mappedProgress} />
 
-          <Phase4Impact scrollYProgress={scrollYProgress} dashboardMockup={dashboardMockup} />
+          <Phase4Impact scrollYProgress={mappedProgress} dashboardMockup={dashboardMockup} />
         </div>
       </div>
 
