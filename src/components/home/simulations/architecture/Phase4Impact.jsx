@@ -1,18 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, useTransform } from 'framer-motion';
 import { FiMenu, FiX, FiPieChart, FiUsers, FiFolder, FiSettings, FiBell, FiSearch } from 'react-icons/fi';
 
 export default function Phase4Impact({ scrollYProgress }) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   // Global opacity (fades in exactly when Phase 3 fades out at 0.80 - 0.82)
   const phase4Opacity = useTransform(scrollYProgress, [0.80, 0.82, 1, 1], [0, 1, 1, 1]);
 
   // --- SEAMLESS EXPANSION (0.82 - 0.85) AND SQUEEZE (0.90 - 0.95) ---
-  const dashWidth = useTransform(scrollYProgress, [0.82, 0.85, 0.90, 0.95], ["50%", "100%", "100%", "30%"]);
+  const dashWidth = useTransform(scrollYProgress, [0.82, 0.85, 0.90, 0.95], isMobile ? ["100%", "100%", "100%", "85%"] : ["50%", "100%", "100%", "30%"]);
   // Push the shrinking container back to the center for desktop, then to the right for mobile
-  const leftSpacerWidth = useTransform(scrollYProgress, [0.82, 0.85, 0.90, 0.95], ["50%", "0%", "0%", "60%"]);
+  const leftSpacerWidth = useTransform(scrollYProgress, [0.82, 0.85, 0.90, 0.95], isMobile ? ["0%", "0%", "0%", "7.5%"] : ["50%", "0%", "0%", "60%"]);
   const gapSpace = useTransform(scrollYProgress, [0.82, 0.85], ["1.5rem", "0rem"]);
   // Make the phone taller than the desktop
-  const mainHeight = useTransform(scrollYProgress, [0.82, 0.85, 0.90, 0.95], ["55vh", "70vh", "70vh", "85vh"]);
+  const mainHeight = useTransform(scrollYProgress, [0.82, 0.85, 0.90, 0.95], isMobile ? ["55vh", "60vh", "60vh", "65vh"] : ["55vh", "70vh", "70vh", "85vh"]);
   const headerHeight = useTransform(scrollYProgress, [0.82, 0.85], ["45px", "70px"]);
   const innerScale = useTransform(scrollYProgress, [0.82, 0.85], [0.95, 1]);
   const containerBorderRadius = useTransform(scrollYProgress, [0.90, 0.95], ["1rem", "2.5rem"]);
@@ -47,13 +56,22 @@ export default function Phase4Impact({ scrollYProgress }) {
         <h2 className="txt-ff fw-700 ff-gro" style={{ fontSize: '3rem' }}>The <span className="txt-ffd">Impact</span>.</h2>
       </motion.div>
 
-      {/* Mobile Title + Description (Left Aligned) */}
-      <motion.div className="position-absolute z-2" style={{ opacity: mobileTextOpacity, y: mobileTextY, left: '10%', top: '40%', maxWidth: '400px' }}>
-        <h2 className="txt-ff fw-700 ff-gro" style={{ fontSize: '3.5rem', lineHeight: 1.1 }}>The <span className="txt-ffd">Impact</span>.</h2>
-        <p className="txt-f5 fs-19 mt-3">Flawless execution. Production ready. Highly interactive.</p>
+      {/* Mobile Title + Description (Left Aligned on Desktop, Top Centered on Mobile) */}
+      <motion.div className="position-absolute z-4" style={{ 
+        opacity: mobileTextOpacity, 
+        y: mobileTextY, 
+        x: isMobile ? '-50%' : '0%',
+        left: isMobile ? '50%' : '10%', 
+        top: isMobile ? '6%' : '40%', 
+        maxWidth: '400px',
+        textAlign: isMobile ? 'center' : 'left',
+        width: isMobile ? '90%' : 'auto'
+      }}>
+        <h2 className="txt-ff fw-700 ff-gro" style={{ fontSize: isMobile ? '2.5rem' : '3.5rem', lineHeight: 1.1 }}>The <span className="txt-ffd">Impact</span>.</h2>
+        <p className={`txt-f5 ${isMobile ? 'fs-16' : 'fs-19'} mt-3`}>Flawless execution. Production ready. Highly interactive.</p>
       </motion.div>
 
-      <motion.div className="d-flex w-100 px-3 px-md-5 z-3 position-relative" style={{ maxWidth: '1400px', height: mainHeight, gap: gapSpace, marginTop: '100px' }}>
+      <motion.div className="d-flex w-100 px-3 px-md-5 z-3 position-relative" style={{ maxWidth: '1400px', height: mainHeight, gap: gapSpace, marginTop: isMobile ? '60px' : '100px' }}>
         <motion.div style={{ width: leftSpacerWidth, minWidth: leftSpacerWidth }}></motion.div>
 
         {/* The Dashboard App (Dark Mode) */}
@@ -71,7 +89,7 @@ export default function Phase4Impact({ scrollYProgress }) {
             />
 
             <div className="d-flex align-items-center gap-3">
-              <motion.div style={{ opacity: browserDotsOpacity }} className="d-flex gap-2 me-2">
+              <motion.div style={{ opacity: browserDotsOpacity }} className="d-none d-md-flex gap-2 me-2">
                 <div className="rounded-circle bg-danger" style={{ width: '12px', height: '12px' }}></div>
                 <div className="rounded-circle bg-warning" style={{ width: '12px', height: '12px' }}></div>
                 <div className="rounded-circle bg-success" style={{ width: '12px', height: '12px' }}></div>

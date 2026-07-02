@@ -1,15 +1,15 @@
 import React from 'react';
 import { motion, useTransform } from 'framer-motion';
 
-export default function Phase3Preview({ scrollYProgress }) {
+export default function Phase3Preview({ scrollYProgress, isMobile = false }) {
   // --- RESPONSIVE WIDTH ANIMATION ---
   // Sprint 1 (Auth) = Desktop (100% of half screen)
-  // Sprint 2 (Profile, 0.59-0.69) = Mobile (35% width, centered)
+  // Sprint 2 (Profile, 0.59-0.69) = Mobile (35% width on desktop, 85% on mobile)
   // Sprint 3 (Dashboard, 0.69-0.80) = Desktop
   const containerWidth = useTransform(
     scrollYProgress, 
     [0.57, 0.59, 0.67, 0.69], 
-    ["100%", "38%", "38%", "100%"]
+    ["100%", isMobile ? "85%" : "38%", isMobile ? "85%" : "38%", "100%"]
   );
   // Optional notch for mobile layout
   const notchOpacity = useTransform(
@@ -45,7 +45,7 @@ export default function Phase3Preview({ scrollYProgress }) {
   const previewDashUI = useTransform(scrollYProgress, [0.78, 0.79, 0.82, 0.83], [0, 1, 1, 1]);
 
   return (
-    <div className="flex-grow-1 d-flex justify-content-center align-items-center h-100" style={{ width: '50%' }}>
+    <div className="d-flex justify-content-center align-items-center h-100" style={{ width: isMobile ? '100%' : '50%', flex: 1 }}>
       <motion.div 
         className="d-flex flex-column shadow-lg overflow-hidden border border-secondary border-opacity-25 h-100" 
         style={{ width: containerWidth, borderRadius: containerBorderRadius, background: '#0a0a0e' }}

@@ -13,6 +13,7 @@ import avatarDev from '../../../assets/images/avatar_dev.png';
 import dashboardMockup from '../../../assets/images/dashboard_mockup.png';
 import Lottie from 'lottie-react';
 import devSkillsLottie from '../../../assets/lotties/developer skills.json';
+import handShakeLottie from '../../../assets/lotties/Hand Shake.json';
 
 function ArchitectureFlow() {
   const containerRef = useRef(null);
@@ -30,6 +31,9 @@ function ArchitectureFlow() {
     target: phase5Ref,
     offset: ["start start", "end end"]
   });
+
+  // Outro transition to cover the blank space at the end
+  const outroOpacity = useTransform(phase5Scroll, [0.9, 0.95], [0, 1]);
 
   // --- ROBUST AUTO SNAP BACK LOGIC ---
   const { scrollY } = useScroll();
@@ -99,6 +103,18 @@ function ArchitectureFlow() {
           className="sticky-top w-100 overflow-hidden d-flex align-items-center justify-content-center"
           style={{ height: '100vh', background: '#050505' }}
         >
+          {/* Static Outro Screen */}
+          <motion.div
+            className="position-absolute d-flex flex-column align-items-center justify-content-center w-100 h-100 z-5"
+            style={{ opacity: outroOpacity, pointerEvents: 'none' }}
+          >
+            <div style={{ width: '280px', height: '280px' }}>
+              <Lottie animationData={handShakeLottie} loop={true} />
+            </div>
+            <h3 className="txt-ff fw-700 ff-gro mt-3 text-center" style={{ fontSize: '3rem', letterSpacing: '-1px' }}>Ready to build?</h3>
+            <p className="txt-f5 fs-18 mt-2 ff-mono text-light text-center">Let's shake on it and start your next big project.</p>
+          </motion.div>
+
           <Phase5Conclusion scrollYProgress={phase5Scroll} avatarClient={avatarClient} avatarDev={avatarDev} />
         </div>
       </div>

@@ -1,6 +1,33 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, useTransform } from 'framer-motion';
 import { FiMousePointer } from 'react-icons/fi';
+
+function useWindowScale() {
+  const [scale, setScale] = useState(1.15);
+
+  useEffect(() => {
+    const handleResize = () => {
+      // The canvas is 900px wide and 600px tall. 
+      // Leave horizontal margin by taking 85% of screen width.
+      // Leave vertical margin (250px total for title and cards) from screen height.
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      
+      const widthScale = (width * 0.85) / 900;
+      const heightScale = Math.max(0.3, (height - 250) / 600);
+      
+      // Max scale is 1.0 for desktop to prevent touching edges.
+      const calculatedScale = Math.min(1.0, widthScale, heightScale);
+      setScale(calculatedScale);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return scale;
+}
 
 function TeamCursor({ name, color, startX, startY, endX, endY, progress, timeRange }) {
   const x = useTransform(progress, timeRange, [startX, endX]);
@@ -24,6 +51,8 @@ function TeamCursor({ name, color, startX, startY, endX, endY, progress, timeRan
 }
 
 export default function Phase2Canvas({ scrollYProgress }) {
+  const dynamicScale = useWindowScale();
+
   // --- BACKGROUND AMBIENT GLOWS ---
   const bgUxOpacity = useTransform(scrollYProgress, [0.25, 0.26, 0.32, 0.33], [0, 1, 1, 0]);
   const bgUxX = useTransform(scrollYProgress, [0.25, 0.33], ["-10vw", "10vw"]);
@@ -69,7 +98,7 @@ export default function Phase2Canvas({ scrollYProgress }) {
   return (
     <motion.div className="position-absolute w-100 h-100 z-1" style={{ opacity: canvasOpacity }}>
       {/* Background Title */}
-      <motion.div className="position-absolute top-0 mt-5 pt-5 text-center w-100 z-1" style={{ opacity: titleOpacity }}>
+      <motion.div className="position-absolute top-0 mt-5 text-center w-100 z-1" style={{ opacity: titleOpacity }}>
         <h2 className="txt-ff fw-700 ff-gro" style={{ fontSize: '3rem' }}>The <span className="txt-ffd">Blueprint</span>.</h2>
         <p className="txt-f5 fs-19 mt-2">Human ideation translated into high-fidelity structure.</p>
       </motion.div>
@@ -78,37 +107,36 @@ export default function Phase2Canvas({ scrollYProgress }) {
       <motion.div 
         className="position-absolute rounded-circle pointer-events-none"
         style={{ 
-          width: '50vw', height: '50vw', background: 'radial-gradient(circle, rgba(13,202,240,0.12) 0%, transparent 70%)',
+          width: 'max(50vw, 500px)', height: 'max(50vw, 500px)', background: 'radial-gradient(circle, rgba(13,202,240,0.12) 0%, transparent 70%)',
           filter: 'blur(60px)', opacity: bgUxOpacity, x: bgUxX, y: bgUxY, top: '-5%', left: '-5%', zIndex: 0
         }}
       />
       <motion.div 
         className="position-absolute rounded-circle pointer-events-none"
         style={{ 
-          width: '50vw', height: '50vw', background: 'radial-gradient(circle, rgba(220,53,69,0.12) 0%, transparent 70%)',
+          width: 'max(50vw, 500px)', height: 'max(50vw, 500px)', background: 'radial-gradient(circle, rgba(220,53,69,0.12) 0%, transparent 70%)',
           filter: 'blur(60px)', opacity: bgEngOpacity, x: bgEngX, bottom: '-5%', right: '-5%', zIndex: 0
         }}
       />
       <motion.div 
         className="position-absolute rounded-circle top-50 start-50 translate-middle pointer-events-none"
         style={{ 
-          width: '70vw', height: '70vw', background: 'radial-gradient(circle, rgba(255,216,0,0.1) 0%, transparent 70%)',
+          width: 'max(70vw, 600px)', height: 'max(70vw, 600px)', background: 'radial-gradient(circle, rgba(255,216,0,0.1) 0%, transparent 70%)',
           filter: 'blur(80px)', opacity: bgUiOpacity, scale: bgUiScale, zIndex: 0
         }}
       />
 
-      {/* --- MULTIPLAYER CURSORS --- */}
-      {/* Alice (UI) sketching messy bounds */}
-      <TeamCursor name="Lead UX" color="#0dcaf0" startX={100} startY={400} endX={700} endY={100} progress={scrollYProgress} timeRange={[0.25, 0.31]} />
-      {/* Bob (SysEng) drawing strict bounds */}
-      <TeamCursor name="Sys Eng" color="#dc3545" startX={700} startY={100} endX={100} endY={400} progress={scrollYProgress} timeRange={[0.32, 0.38]} />
-      {/* Charlie (UI) placing cards */}
-      <TeamCursor name="UI Team" color="#FFD800" startX={400} startY={250} endX={600} endY={300} progress={scrollYProgress} timeRange={[0.39, 0.48]} />
-
-
       {/* --- CANVAS AREA (Center - FULL SCREEN SCALED) --- */}
-      <div className="position-absolute top-50 start-50 translate-middle d-flex align-items-center justify-content-center z-1" style={{ width: '900px', height: '600px', transform: 'translate(-50%, -50%) scale(1.15)', transformOrigin: 'center center', maxWidth: '85vw', maxHeight: '85vh' }}>
+      <div className="position-absolute z-1" style={{ top: '55%', left: '50%', width: '900px', height: '600px', transform: `translate(-50%, -50%) scale(${dynamicScale})`, transformOrigin: 'center center' }}>
         
+        {/* --- MULTIPLAYER CURSORS (Inside scaled canvas) --- */}
+        {/* Alice (UX) sketching messy bounds */}
+        <TeamCursor name="Lead UX" color="#0dcaf0" startX={100} startY={400} endX={700} endY={100} progress={scrollYProgress} timeRange={[0.25, 0.31]} />
+        {/* Bob (SysEng) drawing strict bounds */}
+        <TeamCursor name="Sys Eng" color="#dc3545" startX={700} startY={100} endX={100} endY={400} progress={scrollYProgress} timeRange={[0.32, 0.38]} />
+        {/* Charlie (UI) placing cards */}
+        <TeamCursor name="UI Team" color="#FFD800" startX={400} startY={250} endX={600} endY={300} progress={scrollYProgress} timeRange={[0.39, 0.48]} />
+
         {/* Phase A: MESSY SKETCH SVG */}
         <motion.svg 
           width="100%" height="100%" viewBox="0 0 900 600" 

@@ -2,7 +2,7 @@ import React from 'react';
 import { motion, useTransform } from 'framer-motion';
 import { FiTerminal, FiAlertCircle, FiCheck, FiLayout, FiUser, FiLock } from 'react-icons/fi';
 
-export default function Phase3Ide({ scrollYProgress }) {
+export default function Phase3Ide({ scrollYProgress, isMobile = false }) {
   // ==================
   // SPRINT 1: AUTH (0.49 - 0.59)
   // ==================
@@ -39,7 +39,7 @@ export default function Phase3Ide({ scrollYProgress }) {
   const termIdleOpacity = useTransform(scrollYProgress, [0.49, 0.52], [1, 0]);
 
   return (
-    <div className="flex-grow-1 d-flex flex-column rounded-4 shadow-lg overflow-hidden border border-secondary border-opacity-25" style={{ background: '#0a0a0c', width: '50%' }}>
+    <div className="d-flex flex-column rounded-4 shadow-lg overflow-hidden border border-secondary border-opacity-25" style={{ background: '#0a0a0c', width: isMobile ? '100%' : '50%', flex: isMobile ? 2 : 1 }}>
       {/* Editor Header with dynamic tabs */}
       <div className="d-flex align-items-end px-3 position-relative" style={{ background: '#111115', height: '45px', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
         <div className="d-flex gap-2 me-4 mb-3">
@@ -48,21 +48,21 @@ export default function Phase3Ide({ scrollYProgress }) {
           <div className="rounded-circle bg-success" style={{ width: '12px', height: '12px' }}></div>
         </div>
         
-        <motion.div style={{ opacity: authTabOpacity }} className="position-absolute px-3 py-2 bg-dark rounded-top text-white text-opacity-75 fs-14 ff-mono" style={{ bottom: 0, left: '90px', borderTop: '1px solid #333', borderRight: '1px solid #333', borderLeft: '1px solid #333' }}>
+        <motion.div className="position-absolute px-3 py-2 bg-dark rounded-top text-white text-opacity-75 fs-14 ff-mono" style={{ opacity: authTabOpacity, bottom: 0, left: '90px', borderTop: '1px solid #333', borderRight: '1px solid #333', borderLeft: '1px solid #333' }}>
           <FiLock className="me-2"/>Auth.jsx
         </motion.div>
         
-        <motion.div style={{ opacity: profileTabOpacity }} className="position-absolute px-3 py-2 bg-dark rounded-top text-white text-opacity-75 fs-14 ff-mono" style={{ bottom: 0, left: '90px', borderTop: '1px solid #333', borderRight: '1px solid #333', borderLeft: '1px solid #333' }}>
+        <motion.div className="position-absolute px-3 py-2 bg-dark rounded-top text-white text-opacity-75 fs-14 ff-mono" style={{ opacity: profileTabOpacity, bottom: 0, left: '90px', borderTop: '1px solid #333', borderRight: '1px solid #333', borderLeft: '1px solid #333' }}>
           <FiUser className="me-2"/>Profile.jsx
         </motion.div>
 
-        <motion.div style={{ opacity: dashTabOpacity }} className="position-absolute px-3 py-2 bg-dark rounded-top text-white text-opacity-75 fs-14 ff-mono" style={{ bottom: 0, left: '90px', borderTop: '1px solid #333', borderRight: '1px solid #333', borderLeft: '1px solid #333' }}>
+        <motion.div className="position-absolute px-3 py-2 bg-dark rounded-top text-white text-opacity-75 fs-14 ff-mono" style={{ opacity: dashTabOpacity, bottom: 0, left: '90px', borderTop: '1px solid #333', borderRight: '1px solid #333', borderLeft: '1px solid #333' }}>
           <FiLayout className="me-2"/>Dashboard.jsx
         </motion.div>
       </div>
 
       {/* Code Area */}
-      <div className="flex-grow-1 p-4 ff-mono fs-15 position-relative overflow-hidden" style={{ lineHeight: '1.8', color: '#abb2bf' }}>
+      <div className={`flex-grow-1 p-3 p-md-4 ff-mono ${isMobile ? 'fs-12' : 'fs-15'} position-relative overflow-hidden`} style={{ lineHeight: '1.8', color: '#abb2bf' }}>
         
         {/* SPRINT 1: AUTH CODE */}
         <motion.div style={{ opacity: authTabOpacity }} className="position-absolute w-100 h-100 top-0 start-0 p-4">
@@ -149,34 +149,34 @@ export default function Phase3Ide({ scrollYProgress }) {
       </div>
 
       {/* Integrated Terminal */}
-      <div className="position-relative" style={{ height: '140px', background: '#050506', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-        <motion.div className="position-absolute w-100 h-100 p-3 ff-mono fs-14 text-white text-opacity-50" style={{ opacity: termIdleOpacity }}>
+      <div className="position-relative" style={{ height: isMobile ? '100px' : '140px', background: '#050506', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+        <motion.div className={`position-absolute w-100 h-100 p-2 p-md-3 ff-mono ${isMobile ? 'fs-12' : 'fs-14'} text-white text-opacity-50`} style={{ opacity: termIdleOpacity }}>
           <div className="d-flex align-items-center gap-2 mb-2"><FiTerminal /> <span>bash</span></div>
           <div>$ npm run dev</div>
           <div className="txt-success">ready - started server on 0.0.0.0:3000</div>
           <div>wait  - compiling...</div>
         </motion.div>
-        <motion.div className="position-absolute w-100 h-100 p-3 ff-mono fs-14" style={{ opacity: authTermError, background: 'rgba(224, 108, 117, 0.1)' }}>
+        <motion.div className={`position-absolute w-100 h-100 p-2 p-md-3 ff-mono ${isMobile ? 'fs-12' : 'fs-14'}`} style={{ opacity: authTermError, background: 'rgba(224, 108, 117, 0.1)' }}>
           <div className="d-flex align-items-center gap-2 mb-2 txt-danger fw-bold"><FiAlertCircle /> <span>Failed to compile</span></div>
           <div className="txt-danger">./src/Auth.jsx:6:4</div>
           <div className="txt-ff opacity-75">SyntaxError: Unterminated JSX contents.</div>
           <div className="txt-ff opacity-50">&gt; 6 |   return ( &lt;form&gt; ...</div>
         </motion.div>
-        <motion.div className="position-absolute w-100 h-100 p-3 ff-mono fs-14" style={{ opacity: authTermSuccess, background: 'rgba(152, 195, 121, 0.1)' }}>
+        <motion.div className={`position-absolute w-100 h-100 p-2 p-md-3 ff-mono ${isMobile ? 'fs-12' : 'fs-14'}`} style={{ opacity: authTermSuccess, background: 'rgba(152, 195, 121, 0.1)' }}>
           <div className="d-flex align-items-center gap-2 mb-2 txt-success fw-bold"><FiCheck /> <span>Compiled successfully!</span></div>
           <div className="txt-success opacity-75">✓ Hot reloaded Auth.jsx in 84ms.</div>
         </motion.div>
-        <motion.div className="position-absolute w-100 h-100 p-3 ff-mono fs-14" style={{ opacity: profileTermSuccess, background: 'rgba(152, 195, 121, 0.1)' }}>
+        <motion.div className={`position-absolute w-100 h-100 p-2 p-md-3 ff-mono ${isMobile ? 'fs-12' : 'fs-14'}`} style={{ opacity: profileTermSuccess, background: 'rgba(152, 195, 121, 0.1)' }}>
           <div className="d-flex align-items-center gap-2 mb-2 txt-success fw-bold"><FiCheck /> <span>Compiled successfully!</span></div>
           <div className="txt-success opacity-75">✓ Hot reloaded Profile.jsx in 92ms.</div>
         </motion.div>
-        <motion.div className="position-absolute w-100 h-100 p-3 ff-mono fs-14" style={{ opacity: dashTermError, background: 'rgba(224, 108, 117, 0.1)' }}>
+        <motion.div className={`position-absolute w-100 h-100 p-2 p-md-3 ff-mono ${isMobile ? 'fs-12' : 'fs-14'}`} style={{ opacity: dashTermError, background: 'rgba(224, 108, 117, 0.1)' }}>
           <div className="d-flex align-items-center gap-2 mb-2 txt-danger fw-bold"><FiAlertCircle /> <span>Failed to compile</span></div>
           <div className="txt-danger">./src/Dashboard.jsx:4:17</div>
           <div className="txt-ff opacity-75">TypeError: Cannot read properties of undefined (reading 'map')</div>
-          <div className="txt-ff opacity-50">&gt; 4 | {`{`}data.iteems.map(item =&gt; (</div>
+          <div className="txt-ff opacity-50">&gt; 4 | {`{`}data.items.map(item =&gt; (</div>
         </motion.div>
-        <motion.div className="position-absolute w-100 h-100 p-3 ff-mono fs-14" style={{ opacity: dashTermSuccess, background: 'rgba(152, 195, 121, 0.1)' }}>
+        <motion.div className={`position-absolute w-100 h-100 p-2 p-md-3 ff-mono ${isMobile ? 'fs-12' : 'fs-14'}`} style={{ opacity: dashTermSuccess, background: 'rgba(152, 195, 121, 0.1)' }}>
           <div className="d-flex align-items-center gap-2 mb-2 txt-success fw-bold"><FiCheck /> <span>Compiled successfully!</span></div>
           <div className="txt-success opacity-75">✓ Hot reloaded Dashboard.jsx in 124ms.</div>
         </motion.div>

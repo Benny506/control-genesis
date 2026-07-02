@@ -1,18 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, useTransform } from 'framer-motion';
 import Phase2Inspiration from './Phase2Inspiration';
 import Phase2Canvas from './Phase2Canvas';
 
 export default function Phase2Blueprint({ scrollYProgress }) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize(); // Check initially
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   // Global Entry / Exit
   const phase2Opacity = useTransform(scrollYProgress, [0.15, 0.18, 0.48, 0.50], [0, 1, 1, 0]);
   const phase2Scale = useTransform(scrollYProgress, [0.15, 0.18, 0.46, 0.50], [0.5, 1, 1, 1.2]);
   const phase2X = useTransform(scrollYProgress, [0.46, 0.50], ["0%", "-100%"]);
 
-  // --- MINI PROFILE CARDS (Shifted Timings) ---
-  const uxCardOpacity = useTransform(scrollYProgress, [0.25, 0.26, 0.46, 0.47], [0, 1, 1, 0]);
-  const engCardOpacity = useTransform(scrollYProgress, [0.32, 0.33, 0.46, 0.47], [0, 1, 1, 0]);
+  // --- MINI PROFILE CARDS (Sequential Timings to prevent overlap) ---
+  const uxCardOpacity = useTransform(scrollYProgress, [0.25, 0.26, 0.31, 0.32], [0, 1, 1, 0]);
+  const uxCardY = useTransform(scrollYProgress, [0.25, 0.26, 0.31, 0.32], [50, 0, 0, 50]);
+
+  const engCardOpacity = useTransform(scrollYProgress, [0.32, 0.33, 0.38, 0.39], [0, 1, 1, 0]);
+  const engCardY = useTransform(scrollYProgress, [0.32, 0.33, 0.38, 0.39], [50, 0, 0, 50]);
+
   const uiCardOpacity = useTransform(scrollYProgress, [0.39, 0.40, 0.46, 0.47], [0, 1, 1, 0]);
+  const uiCardY = useTransform(scrollYProgress, [0.39, 0.40, 0.46, 0.47], [50, 0, 0, 50]);
 
   return (
     <motion.div 
@@ -33,10 +46,10 @@ export default function Phase2Blueprint({ scrollYProgress }) {
       
       {/* --- DYNAMIC MINI PROFILE CARDS --- */}
       
-      {/* Lead UX (Bottom Left) */}
+      {/* Lead UX */}
       <motion.div 
-        className="position-fixed bottom-0 start-0 m-4 m-md-5 p-3 rounded-pill shadow-lg d-flex align-items-center gap-3 border border-secondary border-opacity-25"
-        style={{ background: 'rgba(15, 15, 20, 0.9)', backdropFilter: 'blur(20px)', opacity: uxCardOpacity, zIndex: 100 }}
+        className={`position-fixed bottom-0 mb-4 mb-md-5 p-3 rounded-pill shadow-lg d-flex align-items-center gap-3 border border-secondary border-opacity-25 w-max-content ${isMobile ? 'start-50 translate-middle-x' : 'start-0 ms-5'}`}
+        style={{ background: 'rgba(15, 15, 20, 0.9)', backdropFilter: 'blur(20px)', opacity: uxCardOpacity, y: uxCardY, zIndex: 100, minWidth: '220px' }}
       >
         <div className="rounded-circle d-flex align-items-center justify-content-center text-dark fw-bold fs-5 shadow-sm" style={{ width: '40px', height: '40px', background: '#0dcaf0' }}>UX</div>
         <div className="pe-2">
@@ -45,10 +58,10 @@ export default function Phase2Blueprint({ scrollYProgress }) {
         </div>
       </motion.div>
 
-      {/* Sys Eng (Bottom Right) */}
+      {/* Sys Eng */}
       <motion.div 
-        className="position-fixed bottom-0 end-0 m-4 m-md-5 p-3 rounded-pill shadow-lg d-flex align-items-center gap-3 border border-secondary border-opacity-25"
-        style={{ background: 'rgba(15, 15, 20, 0.9)', backdropFilter: 'blur(20px)', opacity: engCardOpacity, zIndex: 100 }}
+        className={`position-fixed bottom-0 mb-4 mb-md-5 p-3 rounded-pill shadow-lg d-flex align-items-center gap-3 border border-secondary border-opacity-25 w-max-content ${isMobile ? 'start-50 translate-middle-x' : 'end-0 me-5'}`}
+        style={{ background: 'rgba(15, 15, 20, 0.9)', backdropFilter: 'blur(20px)', opacity: engCardOpacity, y: engCardY, zIndex: 100, minWidth: '220px' }}
       >
         <div className="rounded-circle d-flex align-items-center justify-content-center text-white fw-bold fs-5 shadow-sm" style={{ width: '40px', height: '40px', background: '#dc3545' }}>SE</div>
         <div className="pe-2">
@@ -57,10 +70,10 @@ export default function Phase2Blueprint({ scrollYProgress }) {
         </div>
       </motion.div>
 
-      {/* UI Team (Bottom Left again) */}
+      {/* UI Team */}
       <motion.div 
-        className="position-fixed bottom-0 start-0 m-4 m-md-5 p-3 rounded-pill shadow-lg d-flex align-items-center gap-3 border border-secondary border-opacity-25"
-        style={{ background: 'rgba(15, 15, 20, 0.9)', backdropFilter: 'blur(20px)', opacity: uiCardOpacity, zIndex: 100 }}
+        className={`position-fixed bottom-0 mb-4 mb-md-5 p-3 rounded-pill shadow-lg d-flex align-items-center gap-3 border border-secondary border-opacity-25 w-max-content ${isMobile ? 'start-50 translate-middle-x' : 'start-0 ms-5'}`}
+        style={{ background: 'rgba(15, 15, 20, 0.9)', backdropFilter: 'blur(20px)', opacity: uiCardOpacity, y: uiCardY, zIndex: 100, minWidth: '220px' }}
       >
         <div className="rounded-circle d-flex align-items-center justify-content-center text-dark fw-bold fs-5 shadow-sm" style={{ width: '40px', height: '40px', background: '#FFD800' }}>UI</div>
         <div className="pe-2">

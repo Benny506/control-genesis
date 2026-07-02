@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, useTransform } from 'framer-motion';
 
 function TypingText({ text, progress, start, end }) {
@@ -25,6 +25,15 @@ function TypingText({ text, progress, start, end }) {
 }
 
 export default function Phase5Conclusion({ scrollYProgress, avatarClient, avatarDev }) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   // Master opacity
   const phase5Opacity = useTransform(scrollYProgress, [0, 0.1, 0.9, 1.0], [0, 1, 1, 0]);
 
@@ -50,27 +59,27 @@ export default function Phase5Conclusion({ scrollYProgress, avatarClient, avatar
       style={{ opacity: phase5Opacity }}
     >
       <div className="text-center mb-5">
-        <h2 className="txt-ff fw-700 ff-gro" style={{ fontSize: '3rem' }}>The <span className="text-success">Launch</span>.</h2>
-        <p className="txt-f5 fs-19 mt-2">Delivered on time. Beyond expectations.</p>
+        <h2 className="txt-ff fw-700 ff-gro" style={{ fontSize: isMobile ? '2.5rem' : '3rem' }}>The <span className="text-success">Launch</span>.</h2>
+        <p className={`txt-f5 ${isMobile ? 'fs-16' : 'fs-19'} mt-2`}>Delivered on time. Beyond expectations.</p>
       </div>
 
       <div className="d-flex flex-column gap-4" style={{ maxWidth: '800px', width: '90%' }}>
         
         {/* Chat 1: Dev */}
         <motion.div className="d-flex align-items-end gap-3 w-100 justify-content-end" style={{ y: chat1Y }}>
-          <motion.div className="p-3 rounded-4 shadow" style={{ maxWidth: '450px', background: 'rgba(255, 216, 0, 0.15)', backdropFilter: 'blur(10px)', border: '1px solid rgba(255, 216, 0, 0.3)', borderBottomRightRadius: '0px', opacity: chat1BgOpacity }}>
-            <p className="txt-ffd mb-0 fw-500 fs-18" style={{ lineHeight: '1.5' }}>
+          <motion.div className="p-3 rounded-4 shadow" style={{ maxWidth: isMobile ? '85%' : '450px', background: 'rgba(255, 216, 0, 0.15)', backdropFilter: 'blur(10px)', border: '1px solid rgba(255, 216, 0, 0.3)', borderBottomRightRadius: '0px', opacity: chat1BgOpacity }}>
+            <p className={`txt-ffd mb-0 fw-500 ${isMobile ? 'fs-14' : 'fs-18'}`} style={{ lineHeight: '1.5' }}>
               <TypingText text="Hey! The MVP is officially complete and deployed to production. The dashboard is fully responsive!" progress={scrollYProgress} start={0.2} end={0.3} />
             </p>
           </motion.div>
-          <motion.img src={avatarDev} alt="Dev" className="rounded-circle shadow flex-shrink-0" style={{ opacity: chat1BgOpacity, width: '45px', height: '45px', objectFit: 'cover' }} />
+          <motion.img src={avatarDev} alt="Dev" className="rounded-circle shadow flex-shrink-0" style={{ opacity: chat1BgOpacity, width: isMobile ? '35px' : '45px', height: isMobile ? '35px' : '45px', objectFit: 'cover' }} />
         </motion.div>
 
         {/* Chat 2: Client */}
         <motion.div className="d-flex align-items-end gap-3 w-100 justify-content-start" style={{ y: chat2Y }}>
-          <motion.img src={avatarClient} alt="Client" className="rounded-circle shadow flex-shrink-0" style={{ opacity: chat2BgOpacity, width: '45px', height: '45px', objectFit: 'cover' }} />
-          <motion.div className="p-3 rounded-4 shadow" style={{ maxWidth: '450px', background: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(10px)', border: '1px solid rgba(255,255,255,0.05)', borderBottomLeftRadius: '0px', opacity: chat2BgOpacity }}>
-            <p className="txt-ff mb-0 fw-500 fs-18" style={{ lineHeight: '1.5' }}>
+          <motion.img src={avatarClient} alt="Client" className="rounded-circle shadow flex-shrink-0" style={{ opacity: chat2BgOpacity, width: isMobile ? '35px' : '45px', height: isMobile ? '35px' : '45px', objectFit: 'cover' }} />
+          <motion.div className="p-3 rounded-4 shadow" style={{ maxWidth: isMobile ? '85%' : '450px', background: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(10px)', border: '1px solid rgba(255,255,255,0.05)', borderBottomLeftRadius: '0px', opacity: chat2BgOpacity }}>
+            <p className={`txt-ff mb-0 fw-500 ${isMobile ? 'fs-14' : 'fs-18'}`} style={{ lineHeight: '1.5' }}>
               <TypingText text="This is absolutely wonderful! I'm amazed at how fast and fluid the mobile view feels." progress={scrollYProgress} start={0.4} end={0.5} />
             </p>
           </motion.div>
@@ -78,19 +87,19 @@ export default function Phase5Conclusion({ scrollYProgress, avatarClient, avatar
 
         {/* Chat 3: Dev */}
         <motion.div className="d-flex align-items-end gap-3 w-100 justify-content-end" style={{ y: chat3Y }}>
-          <motion.div className="p-3 rounded-4 shadow" style={{ maxWidth: '450px', background: 'rgba(255, 216, 0, 0.15)', backdropFilter: 'blur(10px)', border: '1px solid rgba(255, 216, 0, 0.3)', borderBottomRightRadius: '0px', opacity: chat3BgOpacity }}>
-            <p className="txt-ffd mb-0 fw-500 fs-18" style={{ lineHeight: '1.5' }}>
+          <motion.div className="p-3 rounded-4 shadow" style={{ maxWidth: isMobile ? '85%' : '450px', background: 'rgba(255, 216, 0, 0.15)', backdropFilter: 'blur(10px)', border: '1px solid rgba(255, 216, 0, 0.3)', borderBottomRightRadius: '0px', opacity: chat3BgOpacity }}>
+            <p className={`txt-ffd mb-0 fw-500 ${isMobile ? 'fs-14' : 'fs-18'}`} style={{ lineHeight: '1.5' }}>
               <TypingText text="Glad you love it! We optimized the transitions and assets so it runs at a solid 60fps." progress={scrollYProgress} start={0.6} end={0.7} />
             </p>
           </motion.div>
-          <motion.img src={avatarDev} alt="Dev" className="rounded-circle shadow flex-shrink-0" style={{ opacity: chat3BgOpacity, width: '45px', height: '45px', objectFit: 'cover' }} />
+          <motion.img src={avatarDev} alt="Dev" className="rounded-circle shadow flex-shrink-0" style={{ opacity: chat3BgOpacity, width: isMobile ? '35px' : '45px', height: isMobile ? '35px' : '45px', objectFit: 'cover' }} />
         </motion.div>
 
         {/* Chat 4: Client */}
         <motion.div className="d-flex align-items-end gap-3 w-100 justify-content-start" style={{ y: chat4Y }}>
-          <motion.img src={avatarClient} alt="Client" className="rounded-circle shadow flex-shrink-0" style={{ opacity: chat4BgOpacity, width: '45px', height: '45px', objectFit: 'cover' }} />
-          <motion.div className="p-3 rounded-4 shadow" style={{ maxWidth: '450px', background: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(10px)', border: '1px solid rgba(255,255,255,0.05)', borderBottomLeftRadius: '0px', opacity: chat4BgOpacity }}>
-            <p className="txt-ff mb-0 fw-500 fs-18" style={{ lineHeight: '1.5' }}>
+          <motion.img src={avatarClient} alt="Client" className="rounded-circle shadow flex-shrink-0" style={{ opacity: chat4BgOpacity, width: isMobile ? '35px' : '45px', height: isMobile ? '35px' : '45px', objectFit: 'cover' }} />
+          <motion.div className="p-3 rounded-4 shadow" style={{ maxWidth: isMobile ? '85%' : '450px', background: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(10px)', border: '1px solid rgba(255,255,255,0.05)', borderBottomLeftRadius: '0px', opacity: chat4BgOpacity }}>
+            <p className={`txt-ff mb-0 fw-500 ${isMobile ? 'fs-14' : 'fs-18'}`} style={{ lineHeight: '1.5' }}>
               <TypingText text="Incredible work, team! Let's schedule a call tomorrow to review the launch metrics." progress={scrollYProgress} start={0.8} end={0.9} />
             </p>
           </motion.div>
