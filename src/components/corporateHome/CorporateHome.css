@@ -17,6 +17,7 @@
   0% {
     background-position: 0px 0px;
   }
+
   100% {
     background-position: 350px 250px;
   }
@@ -117,7 +118,8 @@
     order: 1 !important;
     display: flex !important;
     max-width: 540px !important;
-    margin-bottom: clamp(48px, 8vh, 76px) !important; /* Larger spacing between pitch and works list */
+    margin-bottom: clamp(48px, 8vh, 76px) !important;
+    /* Larger spacing between pitch and works list */
   }
 
   .corporate-home-pitch p {
