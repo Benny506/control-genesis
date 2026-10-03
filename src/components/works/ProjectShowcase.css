@@ -1,0 +1,85 @@
+/* ==========================================================================
+   Project Showcase Styles & Mobile Spacing Optimization
+   ========================================================================== */
+
+/* Hero Display Stage Base */
+.showcase-hero-stage {
+  min-height: 680px;
+  margin-top: 4vh;
+  margin-bottom: 8vh;
+  position: relative;
+  width: 100%;
+}
+
+.showcase-hero-stage.is-phone {
+  min-height: 740px;
+}
+
+/* ==========================================================================
+   Mobile Landscape Mockup Spacing Fix (max-width: 991px)
+   Eliminates the giant empty void when the mockup is a landscape screen (~200px high)
+   instead of an iPhone (~600px high).
+   ========================================================================== */
+@media (max-width: 991px) {
+  /* Hero stage for landscape images on mobile */
+  .showcase-hero-stage.is-landscape {
+    min-height: auto !important;
+    height: auto !important;
+    margin-top: 2vh !important;
+    margin-bottom: 24px !important;
+  }
+
+  /* Scale halo and concentric background rings down on mobile for landscape */
+  .showcase-hero-stage.is-landscape .showcase-halo {
+    height: 240px !important;
+    top: 50% !important;
+    filter: blur(28px) !important;
+  }
+
+  .showcase-hero-stage.is-landscape .showcase-stage-ring-outer {
+    height: 220px !important;
+    top: 50% !important;
+  }
+
+  .showcase-hero-stage.is-landscape .showcase-stage-ring-inner {
+    height: 160px !important;
+    top: 50% !important;
+  }
+
+  /* The section immediately following the hero (Introduction Section) */
+  .showcase-hero-stage.is-landscape + .showcase-intro-section,
+  .showcase-intro-section {
+    margin-top: 1.5rem !important;
+    margin-bottom: 2rem !important;
+    padding-top: 28px !important;
+    padding-bottom: 32px !important;
+  }
+
+  /* Horizontal carousel section on mobile */
+  .showcase-carousel-section {
+    margin-top: 2rem !important;
+    margin-bottom: 2rem !important;
+    padding-top: 28px !important;
+    padding-bottom: 28px !important;
+  }
+
+  /* Gallery section on mobile */
+  .showcase-gallery-section {
+    margin-top: 2rem !important;
+    margin-bottom: 2rem !important;
+    padding-top: 28px !important;
+    padding-bottom: 36px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .showcase-hero-stage.is-landscape {
+    margin-bottom: 18px !important;
+  }
+
+  .showcase-hero-stage.is-landscape + .showcase-intro-section,
+  .showcase-intro-section {
+    margin-top: 1.25rem !important;
+    padding-top: 22px !important;
+  }
+}

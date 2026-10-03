@@ -1,19 +1,38 @@
 .footerContainer {
+    position: relative;
+    z-index: 1;
     padding-top: 40px;
-    background-image: url(../../assets/images/backgroundPattern.png);
-    background-size: 100%;
+    background-image: url(../../assets/images/backgroundPattern.webp);
+    background-size: 1440px auto;
     background-repeat: repeat;
     border: none;
-    /* Slowly pan the background back and forth over 2 minutes */
-    animation: panFooterBg 20s ease-in-out infinite alternate;
+    /* Slowly pan the background back and forth */
+    animation: panFooterBg 24s ease-in-out infinite alternate;
+}
+
+.footerContainer.transparent-bg {
+    background-image: none !important;
+    background-color: transparent !important;
+    animation: none !important;
 }
 
 @keyframes panFooterBg {
     0% {
-        background-position: 0% 0%;
+        background-position: 0px 0px;
     }
 
     100% {
-        background-position: 100% 100%;
+        background-position: 350px 250px;
     }
+}
+
+.footer-nav-link {
+    color: rgba(255, 255, 255, 0.75) !important;
+    text-decoration: none !important;
+    transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.footer-nav-link:hover {
+    color: #ffd800 !important;
+    opacity: 1 !important;
 }

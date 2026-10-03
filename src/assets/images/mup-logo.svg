@@ -1,0 +1,32 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Deep Blue App Icon Base -->
+  <rect width="200" height="200" rx="45" fill="#083DFA" />
+  
+  <!-- The Stylized Chunky U -->
+  <path d="M 30 35 
+           Q 50 30, 65 40 
+           C 65 110, 80 120, 100 120 
+           C 120 120, 135 110, 135 40 
+           Q 150 30, 170 35 
+           C 160 145, 135 170, 100 170 
+           C 65 170, 40 145, 30 35 Z" fill="#FFFFFF" />
+           
+  <!-- Naira Arrows over bottom right -->
+  <g transform="translate(115, 115) scale(2.0)">
+    <!-- Cutout for the N to separate it slightly from the U (masking effect) -->
+    <circle cx="16" cy="18" r="22" fill="#083DFA" />
+    
+    <!-- N Stems -->
+    <rect x="6" y="4" width="4" height="28" rx="1" fill="#FFFFFF" />
+    <rect x="22" y="4" width="4" height="28" rx="1" fill="#FFFFFF" />
+    
+    <!-- N Diagonal -->
+    <polygon points="6,4 12,4 26,32 20,32" fill="#FFFFFF" />
+    
+    <!-- Top Crossbar Arrow (Right) -->
+    <path d="M 0 13 L 22 13 L 22 9 L 32 14.5 L 22 20 L 22 16 L 0 16 Z" fill="#FFFFFF" />
+    
+    <!-- Bottom Crossbar Arrow (Left) -->
+    <path d="M 32 21 L 10 21 L 10 17 L 0 22.5 L 10 28 L 10 24 L 32 24 Z" fill="#FFFFFF" />
+  </g>
+</svg>

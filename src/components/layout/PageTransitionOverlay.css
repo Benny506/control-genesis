@@ -1,0 +1,32 @@
+/* Page Transition Matrix Grid Animations */
+@keyframes cgColScrollUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes cgColScrollDown {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.cg-grid-col-up {
+  animation: cgColScrollUp 7s linear infinite;
+  will-change: transform;
+}
+
+.cg-grid-col-down {
+  animation: cgColScrollDown 7s linear infinite;
+  will-change: transform;
+}
+
+.cg-transition-grid-tile {
+  box-sizing: border-box;
+}

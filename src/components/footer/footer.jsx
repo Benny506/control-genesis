@@ -6,7 +6,7 @@ import ScrollAnimation from "react-animate-on-scroll";
 import { MdCall, MdWhatsapp } from "react-icons/md";
 import { TfiEmail } from "react-icons/tfi";
 import { NavLink } from "react-router-dom";
-function Footer() {
+function Footer({ transparentBg = false }) {
   const yourGmailAccount = "contact@controlgenesis.com";
 
   const chatComposeUrl = `https://mail.google.com/mail/u/0/#chat/compose?to=${encodeURIComponent(
@@ -23,7 +23,7 @@ function Footer() {
 
   return (
     <ScrollAnimation animateIn="fadeIn">
-      <div className="footerContainer spacing-50">
+      <div className={`footerContainer spacing-50 ${transparentBg ? "transparent-bg" : ""}`}>
         <div className="d-flex justify-content-between align-items-center pb-xl-5 pb-3">
           <div className="fs-72 txt-ff fs-700">
             <span className="txt-ffd">Connect</span> With <br />
@@ -125,6 +125,13 @@ function Footer() {
                 >
                   Our Works
                 </NavLink>
+                {/* <NavLink
+                  to="/developer-view"
+                  style={{ color: "white", textDecoration: "none" }}
+                  className="footer-nav-link"
+                >
+                  How We Work
+                </NavLink> */}
               </div>
             </div>
 

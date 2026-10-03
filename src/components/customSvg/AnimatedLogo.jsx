@@ -25,7 +25,7 @@ const cgIconVariants = {
   })
 };
 
-export default function AnimatedLogo({ size = 38, color = "#FAFAFF" }) {
+export default function AnimatedLogo({ size = 38, color = "#FAFAFF", style = {}, className = "" }) {
   return (
     <motion.svg 
       width={size} 
@@ -33,7 +33,8 @@ export default function AnimatedLogo({ size = 38, color = "#FAFAFF" }) {
       viewBox="0 0 38 38" 
       fill="none" 
       xmlns="http://www.w3.org/2000/svg"
-      style={{ display: 'inline-block' }}
+      className={className}
+      style={{ display: 'inline-block', ...style }}
     >
       <g clipPath="url(#clip0_106_133)">
         {cgIconPaths.map((d, index) => (

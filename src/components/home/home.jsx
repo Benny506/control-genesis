@@ -9,20 +9,21 @@ import Trust from "./trust/trust";
 import Contact from "./contact/contact";
 
 function Home() {
-  return (
-    <>
-      <div className="bg-02">
-        <Navigation />
-        <Hero />
-        {/* <CodeToCanvas /> */}
-        <ArchitectureFlow />
-        {/* <Expertise /> */}
-        {/* <Trust /> */}
-        {/* <Contact /> */}
-      </div>
-      <div className="bg-02"><Footer /></div>
-    </>
-  );
+  return null;
+  // return (
+  //   <>
+  //     <div className="bg-02">
+  //       <Navigation />
+  //       <Hero />
+  //       {/* <CodeToCanvas /> */}
+  //       <ArchitectureFlow />
+  //       {/* <Expertise /> */}
+  //       {/* <Trust /> */}
+  //       {/* <Contact /> */}
+  //     </div>
+  //     <div className="bg-02"><Footer /></div>
+  //   </>
+  // );
 }
 
 export default Home;

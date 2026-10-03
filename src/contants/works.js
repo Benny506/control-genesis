@@ -3,7 +3,7 @@ import flexxxaLogo from '../assets/works/flexxxa-logo.png'
 import scrap2StyleLogo from '../assets/works/scrap2style-logo.jpeg'
 import latejcreationsLogo from '../assets/works/latejcreations-logo.jpeg'
 import mumLogo from '../assets/works/mum-logo.png'
-import awambeLogo from '../assets/works/awambe-logo.png'
+import foreStanceLogo from '../assets/logos/forestance/logo.png'
 
 
 const works = [
@@ -78,38 +78,28 @@ const works = [
         tags: ['e-commerce', 'wholesale, retail & pre-orders']
     },
     {
-        companyName: 'My-Uni-Map (MUM)',
+        companyName: 'My-Uni-Map',
         logo: mumLogo,
         type: 'App',
         siteUrl: 'https://my-uni-map.com/',
         appUrls: [
             {
                 for: 'IOS',
-                url: ''
+                url: 'https://apps.apple.com/us/app/my-uni-map/id6749601810'
             },
             {
                 for: 'ANDROID',
-                url: ''
+                url: 'https://play.google.com/store/apps/details?id=com.controlgenesis.mum'
             }
         ],
         tags: ['Navigation', 'Campus LifeStyle']
     },
     {
-        companyName: 'Awambe',
-        logo: awambeLogo,
-        type: 'Web-App',
-        siteUrl: 'https://awambe.com',
-        tags: ['party planning', 'vendors marketplace'],
-        ecosystem: [
-            {
-                title: 'Vendor dashboard',
-                url: 'https://vendor.awambe.com',
-            },
-            {
-                title: 'Planner Dashboard',
-                url: 'https://planner.awambe.com',
-            },
-        ]
+        companyName: 'ForeStance',
+        logo: foreStanceLogo,
+        type: 'Site',
+        siteUrl: 'https://forestance.com',
+        tags: ['brand strategy & identity', 'creative direction', 'digital experience']
     },
 ];
 

@@ -11,8 +11,8 @@ import Phase5Conclusion from './architecture/Phase5Conclusion';
 
 import uiAnimation from '../../../assets/lotties/ui.json';
 import avatarClient from '../../../assets/images/avatar_client.png';
-import avatarDev from '../../../assets/images/avatar_dev.png';
-import dashboardMockup from '../../../assets/images/dashboard_mockup.png';
+import avatarDev from '../../../assets/images/avatar_dev.webp';
+import dashboardMockup from '../../../assets/images/dashboard_mockup.webp';
 import Lottie from 'lottie-react';
 import devSkillsLottie from '../../../assets/lotties/developer skills.json';
 import handShakeLottie from '../../../assets/lotties/Hand Shake.json';

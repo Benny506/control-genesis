@@ -1,5 +1,5 @@
-import ourStory from "../../../assets/images/ourStory.png";
-import drivenByResult from "../../../assets/images/drivenByResult.png";
+import ourStory from "../../../assets/images/ourStory.webp";
+import drivenByResult from "../../../assets/images/drivenByResult.webp";
 import CustomSvg from "../../customSvg/CustomSvg";
 import { motion } from "framer-motion";
 
