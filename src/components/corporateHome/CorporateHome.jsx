@@ -29,7 +29,7 @@ function CorporateHome() {
     {
       companyName: 'flexXxa',
       logo: works.find(w => w.companyName === 'flexXxa')?.logo,
-      type: 'Mobile Platform',
+      type: 'Social Platform (Mobile)',
       sector: 'Event Ticketing & Social Discovery',
       summary: 'High-speed event ticketing, real-time venue discovery, and community connection platform built for iOS and Android.'
     },
@@ -84,27 +84,27 @@ function CorporateHome() {
     ],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
-      "name": "Digital Solutions & Architecture",
+      "name": "Digital Solutions & Business Systems",
       "itemListElement": [
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "Web & Mobile Platform Architecture"
+            "name": "Customer-Facing Mobile & Web Platforms"
           }
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "Enterprise Software Engineering"
+            "name": "Operations & Workflow Automation Systems"
           }
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "Bespoke Digital Ecosystems"
+            "name": "Grant-Ready Platforms & Institutional Ecosystems"
           }
         }
       ]
@@ -214,6 +214,154 @@ function CorporateHome() {
           </div>
 
         </div>
+      </div>
+
+
+      {/* =========================================================================
+          SECTION 2: SELECTED CLIENTS (Horizontal Filmstrip Reel)
+          ========================================================================= */}
+      <section className="corporate-filmstrip-section">
+        <div className="filmstrip-header">
+          <div>
+            <span className="editorial-kicker">01 / Selected Platforms</span>
+            <h2 className="editorial-heading ff-gro fw-600 m-0" style={{ fontSize: 'clamp(2rem, 3.8vw, 3rem)' }}>
+              Building for real-world impact.
+            </h2>
+          </div>
+
+          <div className="d-none d-md-flex align-items-center gap-3">
+            <span className="txt-f5 fs-14 opacity-50 me-2">Drag or scroll to explore</span>
+            <button
+              onClick={() => scrollClients('left')}
+              className="filmstrip-nav-btn"
+              aria-label="Scroll left"
+            >
+              ←
+            </button>
+            <button
+              onClick={() => scrollClients('right')}
+              className="filmstrip-nav-btn"
+              aria-label="Scroll right"
+            >
+              →
+            </button>
+          </div>
+        </div>
+
+        {/* Filmstrip Track */}
+        <div
+          ref={clientsScrollRef}
+          className="filmstrip-track"
+        >
+          {clientHighlights.map((client, index) => {
+            const slug = client.companyName.toLowerCase().replace(/[^a-z0-9]+/g, '');
+            return (
+              <div
+                key={index}
+                data-transition-path={`/works/${slug}`}
+                onClick={() => navigate(`/works/${slug}`)}
+                className="filmstrip-panel"
+              >
+                <div>
+                  <div className="d-flex justify-content-between align-items-center mb-4">
+                    <span
+                      className="text-uppercase fw-600"
+                      style={{
+                        fontSize: '11px',
+                        letterSpacing: '0.14em',
+                        color: '#ffd800'
+                      }}
+                    >
+                      {String(index + 1).padStart(2, '0')} / 06
+                    </span>
+                    <span className="filmstrip-type-badge">
+                      {client.type}
+                    </span>
+                  </div>
+
+                  {client.logo && (
+                    <div className="filmstrip-logo-wrapper mb-3">
+                      <img
+                        src={client.logo}
+                        alt={`${client.companyName} logo`}
+                        className="filmstrip-logo-img"
+                      />
+                    </div>
+                  )}
+
+                  <h3 className="txt-ff ff-gro fw-600 fs-28 mb-2">{client.companyName}</h3>
+                  <div className="fs-14 fw-500 mb-3" style={{ letterSpacing: '0.02em', color: 'rgba(255, 255, 255, 0.8)' }}>
+                    {client.sector}
+                  </div>
+                  <p className="fs-15 m-0" style={{ lineHeight: 1.65, color: 'rgba(245, 245, 245, 0.85)' }}>
+                    {client.summary}
+                  </p>
+                </div>
+
+                <div className="d-flex justify-content-between align-items-center pt-4 mt-4" style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+                  <span className="txt-ff ff-gro fw-500 fs-14">View Showcase</span>
+                  <span className="filmstrip-arrow">↗</span>
+                </div>
+              </div>
+            );
+          })}
+
+          {/* End Panel linking to Works */}
+          <div
+            data-transition-path="/works"
+            onClick={() => navigate('/works')}
+            className="filmstrip-panel d-flex flex-column justify-content-between"
+            style={{
+              background: 'rgba(255, 216, 0, 0.03)',
+              borderColor: 'rgba(255, 216, 0, 0.25)'
+            }}
+          >
+            <div>
+              <div className="d-flex justify-content-between align-items-center mb-4">
+                <span
+                  className="text-uppercase fw-600"
+                  style={{ fontSize: '11px', letterSpacing: '0.14em', color: '#ffd800' }}
+                >
+                  ALL WORKS
+                </span>
+                <span
+                  className="filmstrip-type-badge"
+                  style={{
+                    color: '#ffd800',
+                    borderColor: 'rgba(255, 216, 0, 0.3)',
+                    background: 'rgba(255, 216, 0, 0.08)'
+                  }}
+                >
+                  PORTFOLIO
+                </span>
+              </div>
+
+              <div className="filmstrip-logo-wrapper mb-3">
+                <div className="filmstrip-endpanel-icon">
+                  →
+                </div>
+              </div>
+
+              <h3 className="txt-ff ff-gro fw-600 fs-28 mb-2">Complete Footprint</h3>
+              <div className="txt-f5 fs-13 fw-500 mb-3 opacity-60" style={{ letterSpacing: '0.04em' }}>
+                Full Systems & Ecosystems
+              </div>
+              <p className="txt-f5 fs-15 m-0" style={{ lineHeight: 1.6, opacity: 0.8 }}>
+                Explore our full engineering portfolio across health systems, campus mobility, social ticketing, and custom commerce platforms.
+              </p>
+            </div>
+
+            <div className="d-flex justify-content-between align-items-center pt-4 mt-4" style={{ borderTop: '1px solid rgba(255, 216, 0, 0.15)' }}>
+              <span className="txt-ffd ff-gro fw-600 fs-14">Explore All Projects</span>
+              <span className="filmstrip-arrow" style={{ color: '#ffd800' }}>→</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <div className="position-relative" style={{ zIndex: 1 }}>
+        <Footer transparentBg={true} />
       </div>
     </div>
   );

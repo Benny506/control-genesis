@@ -32,8 +32,8 @@
 @media (max-width: 991px) {
   /* Title font size scaling on tablets/mobile */
   .showcase-main-title {
-    font-size: clamp(2.5rem, 9.5vw, 4.5rem) !important;
-    line-height: 0.96 !important;
+    font-size: clamp(3rem, 11vw, 5.5rem) !important;
+    line-height: 0.94 !important;
     letter-spacing: -0.035em !important;
   }
 
@@ -89,11 +89,11 @@
 }
 
 @media (max-width: 576px) {
-  /* Prevent any letter overflow on smaller mobile screens */
+  /* Sweet spot for mobile screens */
   .showcase-main-title {
-    font-size: clamp(2.1rem, 9vw, 3.2rem) !important;
-    line-height: 0.98 !important;
-    letter-spacing: -0.03em !important;
+    font-size: clamp(2.8rem, 11.5vw, 3.8rem) !important;
+    line-height: 0.94 !important;
+    letter-spacing: -0.035em !important;
   }
 
   .showcase-hero-stage.is-landscape {
