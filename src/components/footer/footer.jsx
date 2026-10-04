@@ -7,7 +7,7 @@ import { MdCall, MdWhatsapp } from "react-icons/md";
 import { TfiEmail } from "react-icons/tfi";
 import { NavLink } from "react-router-dom";
 function Footer({ transparentBg = false }) {
-  const yourGmailAccount = "contact@controlgenesis.com";
+  const yourGmailAccount = "info@controlgenesis.com";
 
   const chatComposeUrl = `https://mail.google.com/mail/u/0/#chat/compose?to=${encodeURIComponent(
     yourGmailAccount
@@ -31,37 +31,16 @@ function Footer({ transparentBg = false }) {
           </div>
           <img
             src={greatnessFromSmallBeginnings}
+            alt="Greatness from small beginnings"
             style={{ width: "20vw", maxWidth: "152px" }}
           />
         </div>
-        <div className="d-flex justify-content-between flex-wrap gap-5 mt-5 txt-ff pt-5 border-top border-light border-opacity-10">
-          {/* Column 1: Address */}
-          <div className="fs-19" style={{ maxWidth: '350px' }}>
-            {/* <p className="fw-600 mb-3">ADDRESS</p>
-            <p className="fw-500 opacity-75">
-              No 3 Mbo Otu Street, 8 Miles, Odukpani LGA, Cross River State <br />{" "}
-              Nigeria.
-            </p> */}
-            {/* <div className="mt-4">
-              <button
-                className="d-flex align-items-center"
-                style={{
-                  backgroundColor: "black",
-                  border: "1px solid #FFD800",
-                  borderRadius: "40px",
-                  padding: "13px 18px",
-                  color: "#FFD800",
-                }}
-              >
-                <MdCall size={30} />
-                <p className="ms-3 mb-0 fw-500">Book a consultation call</p>
-              </button>
-            </div> */}
-          </div>
 
-          {/* Column 2: Contact Us */}
-          <div className="fs-19">
-            <p className="fw-600 mb-4">CONTACT US</p>
+        {/* 2-Column Balanced Section: Contact Buttons on Left, Quick Links & Legal on Right */}
+        <div className="d-flex justify-content-between flex-wrap gap-5 mt-5 txt-ff pt-5 border-top border-light border-opacity-10">
+          {/* Left Column: Contact Us */}
+          <div className="fs-19" style={{ maxWidth: '420px' }}>
+            <p className="fw-600 mb-4 txt-ff">CONTACT US</p>
             <div className="d-flex flex-column gap-3">
               <a
                 style={{ textDecoration: "none" }}
@@ -74,8 +53,18 @@ function Footer({ transparentBg = false }) {
                   style={{
                     backgroundColor: "#FFD800",
                     borderRadius: "40px",
-                    padding: "13px 18px",
+                    padding: "13px 22px",
                     color: "black",
+                    cursor: "pointer",
+                    transition: "transform 0.2s, background-color 0.2s",
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.transform = "translateY(-2px)";
+                    e.currentTarget.style.backgroundColor = "#ffe234";
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.transform = "translateY(0)";
+                    e.currentTarget.style.backgroundColor = "#FFD800";
                   }}
                 >
                   <TfiEmail size={22} />
@@ -95,8 +84,18 @@ function Footer({ transparentBg = false }) {
                     backgroundColor: "black",
                     border: "1px solid #FFD800",
                     borderRadius: "40px",
-                    padding: "13px 18px",
+                    padding: "13px 22px",
                     color: "#FFD800",
+                    cursor: "pointer",
+                    transition: "transform 0.2s, background-color 0.2s",
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.transform = "translateY(-2px)";
+                    e.currentTarget.style.backgroundColor = "rgba(255, 216, 0, 0.08)";
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.transform = "translateY(0)";
+                    e.currentTarget.style.backgroundColor = "black";
                   }}
                 >
                   <MdWhatsapp size={22} />
@@ -106,10 +105,10 @@ function Footer({ transparentBg = false }) {
             </div>
           </div>
 
-          {/* Column 3: Links & Legal */}
+          {/* Right Column: Quick Links & Legal */}
           <div className="fs-19 d-flex flex-column gap-4">
             <div>
-              <p className="fw-600 mb-3">QUICK LINKS</p>
+              <p className="fw-600 mb-3 txt-ff">QUICK LINKS</p>
               <div className="d-flex flex-column gap-2 fw-500 opacity-75">
                 <NavLink
                   to="/"
@@ -125,55 +124,22 @@ function Footer({ transparentBg = false }) {
                 >
                   Our Works
                 </NavLink>
-                {/* <NavLink
-                  to="/developer-view"
-                  style={{ color: "white", textDecoration: "none" }}
-                  className="footer-nav-link"
-                >
-                  How We Work
-                </NavLink> */}
               </div>
             </div>
 
             <div>
-              <p className="fw-600 mb-3">RC NUMBERS</p>
-              <p className="fw-500 opacity-75">Control Genesis LLC- 8069438</p>
+              <p className="fw-600 mb-2 txt-ff fs-16">RC NUMBERS</p>
+              <p className="fw-500 opacity-75 fs-15 txt-f5 mb-0">Control Genesis LLC - 8069438</p>
             </div>
-
-            {/* <div className="mt-2">
-              <p className="fw-600 mb-3">FOLLOW US</p>
-              <p className="fw-500">
-                <a
-                  href="https://www.instagram.com/controlgenesis/"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  <CustomSvg name="instagram" />
-                </a>
-                &nbsp;{" "}
-                <a
-                  href="https://www.linkedin.com/company/control-genesis-llc"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  <CustomSvg name="linkedIn" />
-                </a>
-                &nbsp;{" "}
-                <a
-                  href="https://web.facebook.com/profile.php?id=61558336018940"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  <CustomSvg name="facebook" />
-                </a>
-              </p>
-            </div> */}
           </div>
         </div>
-        <small className="txt-ff mt-5 d-flex align-items-center flex-wrap justify-content-center">
-          &#169; &nbsp; 2024 Powered By &nbsp; <img src={logoAndName} /> &nbsp;
-          - All right reserved{" "}
-        </small>
+
+        {/* Centralized Bottom Copyright Text */}
+        <div className="mt-5 pt-4 text-center border-top border-light border-opacity-10">
+          <small className="txt-ff opacity-75 d-inline-flex align-items-center flex-wrap justify-content-center">
+            &#169; &nbsp; 2024 Powered By &nbsp; <img src={logoAndName} alt="Control Genesis" style={{ height: "20px" }} /> &nbsp; - All rights reserved
+          </small>
+        </div>
       </div>
     </ScrollAnimation>
   );
