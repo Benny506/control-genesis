@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Navigation from "../navigation/navigation";
 import Footer from "../footer/footer";
@@ -9,6 +9,59 @@ import "./CorporateHome.css";
 
 function CorporateHome() {
   const navigate = useNavigate();
+  const clientsScrollRef = useRef(null);
+
+  const scrollClients = (direction) => {
+    if (clientsScrollRef.current) {
+      const scrollAmount = direction === 'left' ? -380 : 380;
+      clientsScrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
+
+  const clientHighlights = [
+    {
+      companyName: 'LavenderCare',
+      logo: works.find(w => w.companyName === 'LavenderCare')?.logo,
+      type: 'App & Ecosystem',
+      sector: 'Healthcare & Motherhood Companion',
+      summary: 'Complete maternal health app, hospital management system, laboratory dashboards, and pharmacy management suite.'
+    },
+    {
+      companyName: 'flexXxa',
+      logo: works.find(w => w.companyName === 'flexXxa')?.logo,
+      type: 'Mobile Platform',
+      sector: 'Event Ticketing & Social Discovery',
+      summary: 'High-speed event ticketing, real-time venue discovery, and community connection platform built for iOS and Android.'
+    },
+    {
+      companyName: 'Scrap2Style',
+      logo: works.find(w => w.companyName === 'Scrap2Style')?.logo,
+      type: 'E-Commerce',
+      sector: 'Sustainable Fashion & Wholesale',
+      summary: 'Automated wholesale, retail, and pre-order commerce architecture with streamlined inventory and multi-channel fulfillment.'
+    },
+    {
+      companyName: 'LaTej-Creations',
+      logo: works.find(w => w.companyName === 'LaTej-Creations')?.logo,
+      type: 'E-Commerce',
+      sector: 'Bespoke Fashion & Lifestyle',
+      summary: 'High-touch lifestyle e-commerce experience with interactive lookbooks, bespoke sizing engine, and global checkout.'
+    },
+    {
+      companyName: 'My-Uni-Map',
+      logo: works.find(w => w.companyName === 'My-Uni-Map')?.logo,
+      type: 'Navigation',
+      sector: 'Campus Navigation & Lifestyle',
+      summary: 'Geospatial indoor/outdoor campus navigation and student lifestyle platform serving thousands across higher institutions.'
+    },
+    {
+      companyName: 'ForeStance',
+      logo: works.find(w => w.companyName === 'ForeStance')?.logo,
+      type: 'Brand Studio',
+      sector: 'Brand Direction & Interactive Design',
+      summary: 'Strategic brand identity, editorial digital storytelling, and interactive creative direction for ambitious ventures.'
+    }
+  ];
 
   const homeSchema = {
     "@context": "https://schema.org",
@@ -163,10 +216,10 @@ function CorporateHome() {
         </div>
       </div>
 
-      {/* Footer */}
-      <div className="position-relative" style={{ zIndex: 1 }}>
-        <Footer transparentBg={true} />
-      </div>
+      {/* =========================================================================
+          SECTION 1: WHAT WE DO (Capabilities & Disciplines)
+          ========================================================================= */}
+
     </div>
   );
 }

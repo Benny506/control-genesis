@@ -37,11 +37,11 @@ function Footer({ transparentBg = false }) {
         <div className="d-flex justify-content-between flex-wrap gap-5 mt-5 txt-ff pt-5 border-top border-light border-opacity-10">
           {/* Column 1: Address */}
           <div className="fs-19" style={{ maxWidth: '350px' }}>
-            <p className="fw-600 mb-3">ADDRESS</p>
+            {/* <p className="fw-600 mb-3">ADDRESS</p>
             <p className="fw-500 opacity-75">
               No 3 Mbo Otu Street, 8 Miles, Odukpani LGA, Cross River State <br />{" "}
               Nigeria.
-            </p>
+            </p> */}
             {/* <div className="mt-4">
               <button
                 className="d-flex align-items-center"
@@ -79,7 +79,7 @@ function Footer({ transparentBg = false }) {
                   }}
                 >
                   <TfiEmail size={22} />
-                  <p className="ms-3 mb-0 fw-500">contact@controlgenesis.com</p>
+                  <p className="ms-3 mb-0 fw-500">info@controlgenesis.com</p>
                 </button>
               </a>
 

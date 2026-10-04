@@ -1,8 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaApple, FaGooglePlay, FaExternalLinkAlt } from 'react-icons/fa';
 
 function ProjectCard({ project, index }) {
+  const navigate = useNavigate();
+  const slug = project.companyName.toLowerCase().replace(/[^a-z0-9]+/g, '');
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -48,16 +52,78 @@ function ProjectCard({ project, index }) {
         )}
 
         <div className="d-flex flex-wrap gap-3 pt-4" style={{ borderTop: '1px solid #222' }}>
+          <button
+            data-transition-path={`/works/${slug}`}
+            onClick={() => navigate(`/works/${slug}`)}
+            className="text-decoration-none txt-00 fw-600 px-4 py-2 rounded-3 d-flex align-items-center gap-2 border-0"
+            style={{
+              background: '#FFD800',
+              transition: 'transform 0.2s, background-color 0.2s',
+              cursor: 'pointer',
+              fontSize: '15px'
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = 'translateY(-2px)';
+              e.currentTarget.style.backgroundColor = '#ffe234';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.backgroundColor = '#FFD800';
+            }}
+          >
+            <span>View Showcase</span>
+            <span style={{ fontSize: '16px', lineHeight: 1 }}>→</span>
+          </button>
+
           {project.siteUrl && (
-            <a href={project.siteUrl} target="_blank" rel="noreferrer" className="text-decoration-none txt-00 fw-600 px-4 py-2 rounded-3 d-flex align-items-center gap-2" style={{ background: '#FFD800', transition: 'transform 0.2s' }} onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'} onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}>
-              <FaExternalLinkAlt size={14} /> Visit Site
+            <a
+              href={project.siteUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="text-decoration-none txt-ff fw-500 px-4 py-2 rounded-3 d-flex align-items-center gap-2"
+              style={{
+                background: 'rgba(255, 255, 255, 0.04)',
+                border: '1px solid rgba(255, 255, 255, 0.15)',
+                transition: 'all 0.2s',
+                fontSize: '15px'
+              }}
+              onMouseOver={(e) => {
+                e.currentTarget.style.borderColor = '#FFD800';
+                e.currentTarget.style.color = '#FFD800';
+              }}
+              onMouseOut={(e) => {
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.15)';
+                e.currentTarget.style.color = '#fff';
+              }}
+            >
+              <FaExternalLinkAlt size={12} className="opacity-75" /> Visit Site
             </a>
           )}
           {project.appUrls?.map((app, i) => {
             if (!app.url) return null;
             return (
-              <a key={i} href={app.url} target="_blank" rel="noreferrer" className="text-decoration-none txt-ff px-4 py-2 rounded-3 d-flex align-items-center gap-2 fw-600" style={{ background: '#333', transition: 'background 0.2s' }} onMouseOver={(e) => e.currentTarget.style.background = '#444'} onMouseOut={(e) => e.currentTarget.style.background = '#333'}>
-                {app.for === 'IOS' ? <FaApple size={18} /> : <FaGooglePlay size={16} />}
+              <a
+                key={i}
+                href={app.url}
+                target="_blank"
+                rel="noreferrer"
+                className="text-decoration-none txt-ff px-4 py-2 rounded-3 d-flex align-items-center gap-2 fw-500"
+                style={{
+                  background: 'rgba(255, 255, 255, 0.04)',
+                  border: '1px solid rgba(255, 255, 255, 0.15)',
+                  transition: 'all 0.2s',
+                  fontSize: '15px'
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.borderColor = '#FFD800';
+                  e.currentTarget.style.color = '#FFD800';
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.15)';
+                  e.currentTarget.style.color = '#fff';
+                }}
+              >
+                {app.for === 'IOS' ? <FaApple size={16} /> : <FaGooglePlay size={14} />}
                 {app.for}
               </a>
             );

@@ -146,3 +146,202 @@
     font-size: 14px !important;
   }
 }
+
+/* ==========================================================================
+   Section: What We Do (Capabilities & Disciplines)
+   ========================================================================== */
+.corporate-what-we-do {
+  position: relative;
+  z-index: 1;
+  padding: clamp(90px, 12vh, 150px) 5vw clamp(70px, 10vh, 120px) 5vw;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.what-we-do-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.what-we-do-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: clamp(32px, 3.5vw, 44px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+              background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.what-we-do-card:hover {
+  border-color: rgba(255, 216, 0, 0.4);
+  background-color: rgba(255, 255, 255, 0.04);
+  transform: translateY(-4px);
+}
+
+.what-we-do-number {
+  font-family: var(--font-grotesk, 'Plus Jakarta Sans', sans-serif);
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffd800;
+  letter-spacing: 0.12em;
+  margin-bottom: 24px;
+}
+
+.what-we-do-title {
+  font-size: clamp(1.4rem, 2vw, 1.85rem);
+  line-height: 1.2;
+  margin-bottom: 16px;
+  color: #ffffff;
+}
+
+.what-we-do-desc {
+  font-size: 15px;
+  line-height: 1.65;
+  color: rgba(245, 245, 245, 0.78);
+  margin-bottom: 28px;
+}
+
+.what-we-do-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.what-we-do-tag {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 5px 12px;
+  border-radius: 999px;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.what-we-do-card:hover .what-we-do-tag {
+  border-color: rgba(255, 255, 255, 0.16);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ==========================================================================
+   Section: Selected Clients (Horizontally Scrollable)
+   ========================================================================== */
+.corporate-clients-section {
+  position: relative;
+  z-index: 1;
+  padding: clamp(60px, 9vh, 120px) 0 clamp(80px, 12vh, 140px) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.corporate-clients-header {
+  padding: 0 5vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 36px;
+}
+
+.clients-scroll-track {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  padding: 12px 5vw 36px 5vw;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.clients-scroll-track::-webkit-scrollbar {
+  display: none;
+}
+
+.client-scroll-card {
+  flex: 0 0 clamp(320px, 28vw, 420px);
+  scroll-snap-align: start;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: clamp(28px, 3vw, 38px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  text-decoration: none;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  user-select: none;
+}
+
+.client-scroll-card:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 216, 0, 0.45);
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px -18px rgba(0, 0, 0, 0.8);
+}
+
+.client-card-arrow {
+  display: inline-block;
+  transition: transform 0.25s ease, color 0.25s ease;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 18px;
+  line-height: 1;
+}
+
+.client-scroll-card:hover .client-card-arrow {
+  transform: translateX(6px);
+  color: #ffd800;
+}
+
+.client-scroll-nav-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 18px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.client-scroll-nav-btn:hover {
+  background: #ffd800;
+  border-color: #ffd800;
+  color: #000000;
+  transform: scale(1.06);
+}
+
+@media (max-width: 991px) {
+  .what-we-do-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .client-scroll-card {
+    flex: 0 0 clamp(280px, 80vw, 340px);
+    padding: 24px;
+  }
+
+  .corporate-clients-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}
