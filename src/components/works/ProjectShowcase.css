@@ -3,6 +3,15 @@
    ========================================================================== */
 
 /* Hero Display Stage Base */
+.showcase-main-title {
+  font-size: clamp(3.2rem, 11vw, 13rem);
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  word-break: normal;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}
+
 .showcase-hero-stage {
   min-height: 680px;
   margin-top: 4vh;
@@ -21,6 +30,13 @@
    instead of an iPhone (~600px high).
    ========================================================================== */
 @media (max-width: 991px) {
+  /* Title font size scaling on tablets/mobile */
+  .showcase-main-title {
+    font-size: clamp(2.5rem, 9.5vw, 4.5rem) !important;
+    line-height: 0.96 !important;
+    letter-spacing: -0.035em !important;
+  }
+
   /* Hero stage for landscape images on mobile */
   .showcase-hero-stage.is-landscape {
     min-height: auto !important;
@@ -73,6 +89,13 @@
 }
 
 @media (max-width: 576px) {
+  /* Prevent any letter overflow on smaller mobile screens */
+  .showcase-main-title {
+    font-size: clamp(2.1rem, 9vw, 3.2rem) !important;
+    line-height: 0.98 !important;
+    letter-spacing: -0.03em !important;
+  }
+
   .showcase-hero-stage.is-landscape {
     margin-bottom: 18px !important;
   }

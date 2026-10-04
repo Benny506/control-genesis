@@ -129,7 +129,7 @@ export default function ProjectShowcase({ customSlug }) {
         {/* Title Section */}
         <div className="row mb-4">
           <div className="col-12">
-            <h1 className="ff-gro fw-400 m-0" style={{ fontSize: 'clamp(3.8rem, 13vw, 14rem)', lineHeight: 0.9, letterSpacing: '-0.04em' }}>
+            <h1 className="ff-gro fw-400 m-0 showcase-main-title">
               {project.title}
             </h1>
           </div>
